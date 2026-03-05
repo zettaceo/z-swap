@@ -5,7 +5,17 @@ import { useLang } from "@/lib/i18n";
 export default function FutureSection() {
   const { t } = useLang();
 
-  const phases = [
+  type PhaseColor = "cyan" | "violet" | "gold";
+
+  interface Phase {
+    phase: string;
+    title: string;
+    status: string;
+    statusColor: PhaseColor;
+    items: string[];
+  }
+
+  const phases: Phase[] = [
     {
       phase: "Phase I", title: t.future.phase1, status: t.future.inDev, statusColor: "cyan",
       items: ["Core swap engine deployment","Internal liquidity pools","Smart routing (direct + multi-hop)","Basic analytics dashboard","ZION AI risk scoring (v1)","Security layer integration"],
@@ -20,12 +30,12 @@ export default function FutureSection() {
     },
   ];
 
-  const statusColors: Record<string, string> = {
+  const statusColors: Record<PhaseColor, string> = {
     cyan:   "text-zs-cyan bg-zs-cyan/10 border-zs-cyan/20",
     violet: "text-zs-violet-bright bg-zs-violet/10 border-zs-violet/20",
     gold:   "text-zs-gold bg-zs-gold/10 border-zs-gold/20",
   };
-  const dotColors: Record<string, string> = {
+  const dotColors: Record<PhaseColor, string> = {
     cyan: "bg-zs-cyan", violet: "bg-zs-violet-bright", gold: "bg-zs-gold",
   };
 

@@ -3,7 +3,19 @@
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 
-const layers = [
+type TagColor = "cyan" | "violet" | "gold" | "red" | "green";
+
+interface Layer {
+  id: string;
+  tag: string;
+  title: string;
+  tagColor: TagColor;
+  count: number;
+  features: string[];
+  desc: string;
+}
+
+const layers: Layer[] = [
   {
     id: "swap",
     tag: "Layer 01",
@@ -143,7 +155,7 @@ const layers = [
   },
 ];
 
-const colorMap: Record<string, { text: string; bg: string; border: string; dot: string; activeCard: string }> = {
+const colorMap: Record<TagColor, { text: string; bg: string; border: string; dot: string; activeCard: string }> = {
   cyan: { text: "text-zs-cyan", bg: "bg-zs-cyan/10", border: "border-zs-cyan/25", dot: "bg-zs-cyan", activeCard: "border-zs-cyan/30" },
   violet: { text: "text-zs-violet-bright", bg: "bg-zs-violet/10", border: "border-zs-violet/25", dot: "bg-zs-violet-bright", activeCard: "border-zs-violet/30" },
   gold: { text: "text-zs-gold", bg: "bg-zs-gold/10", border: "border-zs-gold/25", dot: "bg-zs-gold", activeCard: "border-zs-gold/30" },

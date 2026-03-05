@@ -2,7 +2,16 @@
 
 import { useLang } from "@/lib/i18n";
 
-const pillars = [
+type PillarColor = "cyan" | "violet" | "gold" | "red" | "green";
+
+interface Pillar {
+  icon: string;
+  title: string;
+  desc: string;
+  color: PillarColor;
+}
+
+const pillars: Pillar[] = [
   { icon: "⚡", title: "Decentralized Swapping", desc: "Non-custodial token exchange with instant settlement across multiple liquidity sources.", color: "cyan" },
   { icon: "🔀", title: "Liquidity Aggregation", desc: "Best-price routing across aggregated liquidity pools with automatic path optimization.", color: "violet" },
   { icon: "🧠", title: "ZION AI Layer", desc: "AI-assisted market analysis, risk detection, and route optimization — advisory only.", color: "gold" },
@@ -11,7 +20,7 @@ const pillars = [
   { icon: "💳", title: "Z-PAY Settlement", desc: "Powers all fiat↔crypto conversions for Z-PAY — the settlement backbone of ZETTA payments.", color: "green" },
 ];
 
-const colorMap: Record<string, { text: string; bg: string; border: string }> = {
+const colorMap: Record<PillarColor, { text: string; bg: string; border: string }> = {
   cyan:   { text: "text-zs-cyan",          bg: "bg-zs-cyan/8",   border: "border-zs-cyan/20"   },
   violet: { text: "text-zs-violet-bright", bg: "bg-zs-violet/8", border: "border-zs-violet/20" },
   gold:   { text: "text-zs-gold",          bg: "bg-zs-gold/8",   border: "border-zs-gold/20"   },

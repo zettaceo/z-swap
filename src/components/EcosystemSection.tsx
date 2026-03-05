@@ -6,7 +6,7 @@ interface Integration {
   name: string;
   type: string;
   desc: string;
-  color: string;
+  color: EcoColor;
   highlight?: boolean;
 }
 
@@ -17,7 +17,7 @@ interface EcoNode {
   cx: number;
   cy: number;
   r: number;
-  color: string;
+  color: string; // hex values e.g. "#00E8FF"
   primary: boolean;
   highlight?: boolean;
 }
@@ -33,7 +33,9 @@ const integrations: Integration[] = [
   { name: "Z-Assets", type: "Asset Protocol", desc: "Protocol treasury and asset management infrastructure connected to Z-SWAP's liquidity layer.", color: "violet" },
 ];
 
-const colorMap: Record<string, { dot: string; text: string; border: string; bg: string }> = {
+type EcoColor = "cyan" | "violet" | "gold" | "green";
+
+const colorMap: Record<EcoColor, { dot: string; text: string; border: string; bg: string }> = {
   cyan:   { dot: "bg-zs-cyan",           text: "text-zs-cyan",           border: "border-zs-cyan/25",   bg: "bg-zs-cyan/8"   },
   violet: { dot: "bg-zs-violet-bright",  text: "text-zs-violet-bright",  border: "border-zs-violet/25", bg: "bg-zs-violet/8" },
   gold:   { dot: "bg-zs-gold",           text: "text-zs-gold",           border: "border-zs-gold/25",   bg: "bg-zs-gold/8"   },

@@ -33,11 +33,11 @@ export default function CTASection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
-          {[
-            { label: t.cta.status, value: t.cta.statusVal, color: "cyan" },
-            { label: t.cta.reg,    value: t.cta.regVal,    color: "violet" },
-            { label: t.cta.eco,    value: t.cta.ecoVal,    color: "gold" },
-          ].map((item, i) => (
+          {([
+            { label: t.cta.status, value: t.cta.statusVal, color: "cyan" as const },
+            { label: t.cta.reg,    value: t.cta.regVal,    color: "violet" as const },
+            { label: t.cta.eco,    value: t.cta.ecoVal,    color: "gold" as const },
+          ]).map((item, i) => (
             <div key={i} className="glass-card border border-zs-border rounded-xl p-4 sm:p-5 text-center">
               <div className={`font-mono text-[10px] sm:text-xs tracking-widest uppercase mb-2 font-bold ${
                 item.color === "cyan" ? "text-zs-cyan" : item.color === "violet" ? "text-zs-violet-bright" : "text-zs-gold"

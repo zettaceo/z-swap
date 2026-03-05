@@ -2,7 +2,16 @@
 
 import { useLang } from "@/lib/i18n";
 
-const checks = [
+type RiskColor = "green" | "gold" | "red";
+
+interface RiskCheck {
+  label: string;
+  status: string;
+  score: number;
+  color: RiskColor;
+}
+
+const checks: RiskCheck[] = [
   { label: "Honeypot Detection",    status: "PASS", score: 100, color: "green" },
   { label: "Contract Verification", status: "PASS", score: 96,  color: "green" },
   { label: "Token Tax Analysis",    status: "WARN", score: 72,  color: "gold"  },
@@ -12,7 +21,7 @@ const checks = [
   { label: "Overall Risk Score",    status: "LOW",  score: 12,  color: "green" },
 ];
 
-const colorMap: Record<string, { text: string; bar: string; badge: string }> = {
+const colorMap: Record<"green" | "gold" | "red", { text: string; bar: string; badge: string }> = {
   green: { text: "text-zs-green", bar: "bg-zs-green",  badge: "bg-zs-green/10 text-zs-green border-zs-green/20" },
   gold:  { text: "text-zs-gold",  bar: "bg-zs-gold",   badge: "bg-zs-gold/10 text-zs-gold border-zs-gold/20"   },
   red:   { text: "text-zs-red",   bar: "bg-zs-red",    badge: "bg-zs-red/10 text-zs-red border-zs-red/20"      },

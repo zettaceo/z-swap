@@ -130,13 +130,13 @@ export default function ArchitectureSection() {
 
         {/* Layer summary cards - fix readability */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-          {[
-            { layer: "UI Layer", desc: "Multi-platform access points", color: "cyan" },
-            { layer: "Routing", desc: "Smart path optimization", color: "violet" },
-            { layer: "Liquidity", desc: "Unified pool management", color: "cyan" },
-            { layer: "Intelligence", desc: "AI & security analysis", color: "gold" },
-            { layer: "Settlement", desc: "Multi-chain execution", color: "green" },
-          ].map((item, i) => (
+          {([ 
+            { layer: "UI Layer", desc: "Multi-platform access points", color: "cyan" as const },
+            { layer: "Routing", desc: "Smart path optimization", color: "violet" as const },
+            { layer: "Liquidity", desc: "Unified pool management", color: "cyan" as const },
+            { layer: "Intelligence", desc: "AI & security analysis", color: "gold" as const },
+            { layer: "Settlement", desc: "Multi-chain execution", color: "green" as const },
+          ]).map((item, i) => (
             <div key={i} className="glass-card p-4 rounded-xl border border-zs-border text-center hover:border-zs-faint transition-colors">
               <div className={`font-mono text-[11px] sm:text-xs tracking-widest uppercase mb-2 font-bold ${
                 item.color === "cyan" ? "text-zs-cyan" :
