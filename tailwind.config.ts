@@ -16,6 +16,13 @@ const config: Config = {
       "2xl": "1536px",
     },
     extend: {
+      // Explicit dvh/svh/lvh — Tailwind 3.4 ships these natively,
+      // but declaring here guarantees JIT includes them when used.
+      minHeight: {
+        dvh: "100dvh",
+        svh: "100svh",
+        lvh: "100lvh",
+      },
       colors: {
         zs: {
           bg: "#04040C",

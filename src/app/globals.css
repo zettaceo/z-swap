@@ -142,6 +142,23 @@ body {
   100% { background-position: 200% 0; }
 }
 
+/* ─── Dynamic viewport height ─────────────────────────────────────────────
+ * `100dvh` = real visible viewport, excluding browser chrome.
+ * Fixes the dead-space issue on Android (Brave, Chrome) where 100vh includes
+ * the address bar, navigation bar, etc.
+ *
+ * Two-value cascade:
+ *   1st value: 100vh  (old browsers, no dvh support — acceptable fallback)
+ *   2nd value: 100dvh (modern browsers — overrides 1st value correctly)
+ *
+ * The `.min-h-dvh` class is declared by Tailwind 3.4, but this rule ensures
+ * the cascade always works correctly.
+ */
+.min-h-dvh {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
 /* Scrollbar hide utility for horizontal scroll containers */
 .scrollbar-none {
   scrollbar-width: none;
