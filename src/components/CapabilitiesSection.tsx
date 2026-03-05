@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLang } from "@/lib/i18n";
 
 const layers = [
   {
@@ -8,195 +9,216 @@ const layers = [
     tag: "Layer 01",
     title: "Swap & Liquidity",
     tagColor: "cyan",
+    count: 27,
     features: [
-      "Instant token swaps",
-      "Multi-hop routing",
-      "Cross-chain swaps",
-      "Smart routing engine",
-      "Liquidity pool creation",
-      "Add / remove liquidity",
-      "Concentrated liquidity pools",
-      "Stable & volatile pools",
-      "LP reward distribution",
-      "Liquidity aggregation",
-      "Best price routing",
-      "Gas estimation",
-      "Swap simulation",
-      "Liquidity impact preview",
+      "Swap instantâneo multichain", "Swap cross-chain nativo",
+      "Roteamento inteligente de liquidez", "Split automático de ordens",
+      "Slippage dinâmico inteligente", "Slippage manual configurável",
+      "Swap parcial por porcentagem", "Swap reversível por tempo limitado",
+      "Swap protegido contra MEV", "Swap protegido contra front-running",
+      "Liquidez concentrada (v3 style)", "Liquidez tradicional AMM clássico",
+      "Pools dinâmicos por par", "Criação automática de pools",
+      "Fee dinâmica por pool", "Fee personalizada por token",
+      "Auto-compound de recompensas", "Liquidez bloqueável por tempo",
+      "Liquidez programável (vesting)", "Liquidez com múltiplos provedores",
+      "Visualização profunda de pools", "Remoção parcial de liquidez",
+      "Remoção programada de liquidez", "Simulação de swap antes da execução",
+      "Histórico detalhado de swaps", "Swap via contrato inteligente direto",
+      "Swap com fallback de liquidez",
     ],
-    desc: "The foundation of Z-SWAP. A full-featured DEX engine with advanced routing, multi-pool support, and real-time execution simulation before any transaction is committed.",
+    desc: "Core DEX engine with advanced routing, multi-pool support, MEV protection, and real-time execution simulation before any transaction is committed.",
   },
   {
     id: "analytics",
     tag: "Layer 02",
     title: "Market Intelligence",
     tagColor: "violet",
+    count: 22,
     features: [
-      "Real-time charts",
-      "Liquidity monitoring",
-      "Market depth visualization",
-      "Historical trade data",
-      "Price alerts",
-      "Liquidity alerts",
-      "Whale activity monitoring",
-      "New token tracking",
-      "Large swap detection",
-      "Liquidity impact simulation",
+      "Gráficos avançados integrados", "Volume real vs volume artificial",
+      "Detector de wash trading", "Detector de bots de arbitragem",
+      "Detector de honeypot", "Detector de taxas abusivas",
+      "Análise de holders em tempo real", "Análise de concentração de supply",
+      "Histórico completo on-chain", "Análise de liquidez histórica",
+      "Comparador de tokens", "Comparador de pools",
+      "Alertas de preço inteligentes", "Alertas de liquidez",
+      "Alertas de movimentação suspeita", "Backtest de estratégias",
+      "Simulação de entrada e saída", "Copy trading manual",
+      "Ranking de tokens", "Ranking de traders",
+      "Análise de risco automática", "Score de confiança do token",
     ],
-    desc: "Professional-grade market intelligence tooling. Monitor whale movements, track liquidity changes in real time, and set custom alerts for market conditions that matter.",
+    desc: "Professional-grade analytics: detect wash trading, monitor whales, backtest strategies, and set precision market alerts.",
   },
   {
     id: "ai",
     tag: "Layer 03",
-    title: "ZION AI",
+    title: "ZION AI & Automation",
     tagColor: "gold",
+    count: 21,
     features: [
-      "Pool analysis",
-      "Route optimization suggestions",
-      "Market opportunity detection",
-      "Strategy backtesting",
-      "Scenario simulations",
-      "Token risk analysis",
-      "Scam detection",
-      "Slippage optimization",
-      "Liquidity allocation suggestions",
-      "AI pattern recognition (roadmap)",
-      "AI-driven market intel (roadmap)",
+      "Sniper automático por IA", "Anti-rug automático",
+      "Escudo Zion (proteção contínua)", "Swap anônimo por IA",
+      "Reversão inteligente de swap", "Simulação IA pré-swap",
+      "Estratégias automáticas personalizadas", "Modo conservador de trading",
+      "Modo agressivo de trading", "Modo institucional",
+      "IA de leitura de contrato", "IA de leitura de liquidez",
+      "IA de leitura de comportamento de holders", "IA de leitura de marketing fake",
+      "Execução otimizada por IA", "Ajuste automático de slippage",
+      "IA de timing de entrada", "IA de timing de saída",
+      "Aprendizado contínuo com mercado", "Painel de controle da IA",
+      "Logs explicáveis da IA",
     ],
-    desc: "ZION AI assists users with market analysis and advisory functions. It never executes transactions without explicit user authorization — purely assistive intelligence.",
+    desc: "ZION AI assists users with market analysis and advisory functions. All suggestions require manual user review — no automated execution.",
   },
   {
     id: "security",
     tag: "Layer 04",
-    title: "Security & Risk",
+    title: "Security & Privacy",
     tagColor: "red",
+    count: 20,
     features: [
-      "Honeypot detection",
-      "Smart contract verification",
-      "Token tax detection",
-      "Rug pull indicators",
-      "Liquidity lock analysis",
-      "Sell simulation",
-      "Risk score system",
+      "Anti-MEV nativo", "Anti-front running avançado",
+      "Multisig inteligente", "Time-lock configurável",
+      "Freeze seletivo de tokens", "Blacklist dinâmica automática",
+      "Whitelist configurável", "Monitoramento on-chain 24/7",
+      "Auditoria contínua por IA", "Alertas de segurança em tempo real",
+      "Proteção contra contratos maliciosos", "Proteção contra proxies suspeitos",
+      "Modo privacidade total", "Ocultação de rotas de swap",
+      "Logs criptografados", "Execução com delay aleatório",
+      "Proteção contra sandwich attack", "Painel de risco por usuário",
+      "Painel de risco por token", "Histórico de incidentes",
     ],
-    desc: "Comprehensive on-chain security analysis protects users at every step. Every token interaction passes through multi-layer risk assessment before execution.",
+    desc: "Comprehensive on-chain security stack: MEV protection, anti-sandwich, privacy mode, continuous AI auditing at every transaction.",
   },
   {
     id: "token",
     tag: "Layer 05",
     title: "Token Creation",
     tagColor: "cyan",
+    count: 18,
     features: [
-      "Token deployment",
-      "Supply configuration",
-      "Tax configuration",
-      "Liquidity initialization",
-      "LP lock configuration",
-      "Automated deployment assistance",
+      "Criador de tokens avançado", "Templates auditados",
+      "Taxas configuráveis (buy/sell/transfer)", "Lock de liquidez nativo",
+      "Vesting inteligente", "Fair launch",
+      "Launch privado", "Launch público",
+      "Anti-bot launch", "Anti-sniper launch",
+      "Gerenciador de holders", "Controle de mint/burn",
+      "Controle de pausas", "Gerador de contratos verificados",
+      "Integração com Z-PAD", "Painel do criador",
+      "Histórico de launches", "Rating de projetos",
     ],
-    desc: "Integrated token creation suite connected to the ZETTA Builder. Deploy and initialize tokens with automatic liquidity setup and LP locking from a single interface.",
+    desc: "Full-featured token deployment suite integrated with Z-PAD, with anti-bot launch mechanisms and automated LP lock.",
   },
   {
     id: "governance",
     tag: "Layer 06",
-    title: "Governance",
+    title: "Governance & DAO",
     tagColor: "violet",
+    count: 14,
     features: [
-      "Proposal creation",
-      "Community voting",
-      "Governance parameter adjustments",
-      "Delegated voting",
-      "Snapshot governance support",
+      "Governança on-chain", "Propostas de melhoria",
+      "Votação ponderada por stake", "Delegação de votos",
+      "Governança por reputação", "DAO híbrida (on/off-chain)",
+      "Penalidades automáticas", "Incentivos por participação",
+      "Ranking de contribuidores", "Tesouraria governada",
+      "Execução automática de propostas", "Histórico de votações",
+      "Alertas de governança", "Painel DAO",
     ],
-    desc: "On-chain governance infrastructure for protocol evolution. Parameter adjustments, fee structures, and protocol upgrades are managed through decentralized governance.",
+    desc: "On-chain governance infrastructure for protocol evolution: staked voting, delegation, hybrid DAO, and automatic proposal execution.",
+  },
+  {
+    id: "integrations",
+    tag: "Layer 07",
+    title: "Integrations & Future",
+    tagColor: "green",
+    count: 10,
+    features: [
+      "Integração com Z-Finance", "Integração com Z-Assets",
+      "Integração com OBELISK-Z Wallet", "Fiat on-ramp",
+      "Fiat off-ramp (Z-PAY)", "Cartão ZETTA",
+      "POS SafeHill", "Pagamentos offline",
+      "API pública da ZETTA Swap", "SDK para desenvolvedores",
+    ],
+    desc: "Deep integration with the full ZETTA financial stack: bank, wallet, fiat gateway, card, POS, and open developer API/SDK.",
   },
 ];
 
-const colorMap: Record<string, string> = {
-  cyan: "text-zs-cyan border-zs-cyan/30 bg-zs-cyan/8",
-  violet: "text-zs-violet-bright border-zs-violet/30 bg-zs-violet/8",
-  gold: "text-zs-gold border-zs-gold/30 bg-zs-gold/8",
-  red: "text-zs-red border-zs-red/30 bg-zs-red/8",
-};
-
-const dotColor: Record<string, string> = {
-  cyan: "bg-zs-cyan",
-  violet: "bg-zs-violet-bright",
-  gold: "bg-zs-gold",
-  red: "bg-zs-red",
+const colorMap: Record<string, { text: string; bg: string; border: string; dot: string; activeCard: string }> = {
+  cyan: { text: "text-zs-cyan", bg: "bg-zs-cyan/10", border: "border-zs-cyan/25", dot: "bg-zs-cyan", activeCard: "border-zs-cyan/30" },
+  violet: { text: "text-zs-violet-bright", bg: "bg-zs-violet/10", border: "border-zs-violet/25", dot: "bg-zs-violet-bright", activeCard: "border-zs-violet/30" },
+  gold: { text: "text-zs-gold", bg: "bg-zs-gold/10", border: "border-zs-gold/25", dot: "bg-zs-gold", activeCard: "border-zs-gold/30" },
+  red: { text: "text-zs-red", bg: "bg-zs-red/10", border: "border-zs-red/25", dot: "bg-zs-red", activeCard: "border-zs-red/30" },
+  green: { text: "text-zs-green", bg: "bg-zs-green/10", border: "border-zs-green/25", dot: "bg-zs-green", activeCard: "border-zs-green/30" },
 };
 
 export default function CapabilitiesSection() {
   const [active, setActive] = useState("swap");
+  const { t } = useLang();
   const activeLayer = layers.find((l) => l.id === active)!;
+  const c = colorMap[activeLayer.tagColor];
 
   return (
-    <section id="capabilities" className="relative py-32">
+    <section id="capabilities" className="relative py-16 sm:py-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="section-label mb-4">04 — Core Capabilities</div>
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-0 lg:items-end lg:justify-between mb-14">
-          <h2 className="font-syne font-bold text-[clamp(1.8rem,3.5vw,3rem)] leading-tight text-zs-text">
-            132 Functions Across{" "}
-            <span className="text-gradient-cyan">7 Protocol Layers</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="section-label mb-3">{t.capabilities.label}</div>
+        <div className="flex flex-col lg:flex-row gap-2 lg:gap-0 lg:items-end lg:justify-between mb-8 sm:mb-12">
+          <h2 className="font-syne font-bold text-[clamp(1.6rem,3.5vw,3rem)] leading-tight text-zs-text">
+            {t.capabilities.title1}{" "}
+            <span className="text-gradient-cyan">{t.capabilities.title2}</span>
           </h2>
-          <p className="font-dm text-zs-muted text-sm max-w-sm leading-relaxed">
-            Each layer is independently operable and integrates with the full ZETTA ecosystem.
-          </p>
+          <p className="font-dm text-zs-muted text-sm max-w-sm leading-relaxed">{t.capabilities.sub}</p>
         </div>
 
-        <div className="grid lg:grid-cols-[240px_1fr] gap-6">
-          {/* Layer tabs */}
-          <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
-            {layers.map((layer) => (
-              <button
-                key={layer.id}
-                onClick={() => setActive(layer.id)}
-                className={`flex-shrink-0 text-left px-4 py-3 rounded-xl border transition-all duration-200 ${
-                  active === layer.id
-                    ? `glass-card border-zs-border ${colorMap[layer.tagColor].split(" ")[0]}`
-                    : "border-transparent text-zs-muted hover:text-zs-text"
-                }`}
-              >
-                <div className={`font-mono text-[10px] tracking-widest uppercase mb-1 ${
-                  active === layer.id ? colorMap[layer.tagColor].split(" ")[0] : "text-zs-faint"
-                }`}>
-                  {layer.tag}
-                </div>
-                <div className="font-syne font-semibold text-sm whitespace-nowrap">{layer.title}</div>
-              </button>
-            ))}
+        <div className="grid lg:grid-cols-[220px_1fr] gap-4 sm:gap-6">
+          {/* Layer tabs - horizontal scroll on mobile */}
+          <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-1 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
+            {layers.map((layer) => {
+              const lc = colorMap[layer.tagColor];
+              const isActive = active === layer.id;
+              return (
+                <button
+                  key={layer.id}
+                  onClick={() => setActive(layer.id)}
+                  className={`flex-shrink-0 text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border transition-all duration-200 ${
+                    isActive
+                      ? `glass-card ${lc.activeCard} ${lc.text}`
+                      : "border-transparent text-zs-muted hover:text-zs-text hover:bg-zs-faint/30"
+                  }`}
+                >
+                  <div className={`font-mono text-[9px] sm:text-[10px] tracking-widest uppercase mb-0.5 ${isActive ? lc.text : "text-zs-faint"}`}>
+                    {layer.tag}
+                  </div>
+                  <div className="font-syne font-semibold text-xs sm:text-sm whitespace-nowrap">{layer.title}</div>
+                  {isActive && (
+                    <div className={`font-mono text-[9px] mt-1 opacity-60`}>{layer.count} {t.capabilities.functions}</div>
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           {/* Active layer content */}
-          <div className="glass-card rounded-2xl border border-zs-border p-8">
-            <div className="flex items-start justify-between mb-6">
+          <div className={`glass-card rounded-2xl border ${c.activeCard} p-5 sm:p-8`}>
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5 sm:mb-6">
               <div>
-                <span className={`tag-badge px-3 py-1 rounded-full border ${colorMap[activeLayer.tagColor]} mb-3 inline-block`}>
+                <span className={`tag-badge px-2.5 py-1 rounded-full border ${c.bg} ${c.border} ${c.text} mb-2.5 inline-block`}>
                   {activeLayer.tag}
                 </span>
-                <h3 className="font-syne font-bold text-2xl text-zs-text">{activeLayer.title} Layer</h3>
+                <h3 className="font-syne font-bold text-xl sm:text-2xl text-zs-text">{activeLayer.title}</h3>
               </div>
-              <div className="font-mono text-xs text-zs-muted border border-zs-border rounded-lg px-3 py-1.5">
-                {activeLayer.features.length} functions
+              <div className="font-mono text-xs text-zs-muted border border-zs-border rounded-lg px-3 py-1.5 self-start">
+                {activeLayer.count} {t.capabilities.functions}
               </div>
             </div>
 
-            <p className="font-dm text-zs-muted leading-relaxed mb-8 text-sm">
-              {activeLayer.desc}
-            </p>
+            <p className="font-dm text-zs-muted leading-relaxed mb-5 sm:mb-6 text-sm">{activeLayer.desc}</p>
 
-            <div className="grid sm:grid-cols-2 gap-2">
+            <div className="grid sm:grid-cols-2 gap-1.5 sm:gap-2">
               {activeLayer.features.map((feat, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-zs-bg-3/50 border border-zs-faint/50">
-                  <div className={`w-1 h-1 rounded-full flex-shrink-0 ${dotColor[activeLayer.tagColor]}`} />
-                  <span className="font-mono text-xs text-zs-text/80 tracking-wide">{feat}</span>
-                  {feat.includes("roadmap") && (
-                    <span className="ml-auto font-mono text-[9px] text-zs-muted border border-zs-faint rounded px-1.5">
-                      ROADMAP
-                    </span>
-                  )}
+                <div key={i} className="flex items-center gap-2.5 p-2.5 sm:p-3 rounded-lg bg-zs-bg-3/60 border border-zs-faint/40 hover:border-zs-faint/80 transition-colors">
+                  <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.dot}`} />
+                  <span className="font-dm text-xs text-zs-text/85 leading-snug">{feat}</span>
                 </div>
               ))}
             </div>
