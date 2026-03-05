@@ -79,12 +79,12 @@ export default function EcosystemSection() {
   });
 
   return (
-    <section id="ecosystem" className="relative py-16 sm:py-24">
+    <section id="ecosystem" className="relative py-10 sm:py-16">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="section-label mb-3">{t.ecosystem.label}</div>
-        <div className="grid lg:grid-cols-2 gap-4 lg:items-end mb-10 sm:mb-14">
+        <div className="grid lg:grid-cols-2 gap-4 lg:items-end mb-6 sm:mb-10">
           <h2 className="font-syne font-bold text-[clamp(1.6rem,3.5vw,3rem)] leading-tight text-zs-text">
             {t.ecosystem.title1}{" "}
             <span className="text-gradient-cyan">{t.ecosystem.title2}</span>

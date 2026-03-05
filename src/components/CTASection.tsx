@@ -6,7 +6,7 @@ export default function CTASection() {
   const { t } = useLang();
 
   return (
-    <section id="cta" className="relative py-16 sm:py-24 overflow-hidden">
+    <section id="cta" className="relative py-10 sm:py-16 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zs-cyan/20 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zs-bg-3 to-zs-bg" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full bg-zs-violet/6 blur-[120px]" />
@@ -23,7 +23,7 @@ export default function CTASection() {
 
         <p className="font-dm text-zs-muted text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-8 sm:mb-10">{t.cta.sub}</p>
 
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-10 sm:mb-14">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-6 sm:mb-10">
           <a href="#" className="px-7 sm:px-10 py-3.5 sm:py-4 bg-zs-cyan text-zs-bg font-syne font-bold text-sm tracking-widest uppercase rounded-xl hover:bg-zs-cyan-dim transition-colors duration-200">
             {t.cta.btn1}
           </a>

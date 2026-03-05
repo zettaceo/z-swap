@@ -6,12 +6,12 @@ export default function ArchitectureSection() {
   const { t } = useLang();
 
   return (
-    <section id="architecture" className="relative py-16 sm:py-24 overflow-hidden">
+    <section id="architecture" className="relative py-10 sm:py-16 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-10">
           <div className="section-label mb-3">{t.architecture.label}</div>
           <h2 className="font-syne font-bold text-[clamp(1.6rem,3.5vw,3rem)] leading-tight text-zs-text mb-4">
             {t.architecture.title1}{" "}

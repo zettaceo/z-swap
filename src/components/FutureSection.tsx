@@ -40,11 +40,11 @@ export default function FutureSection() {
   };
 
   return (
-    <section className="relative py-16 sm:py-24 overflow-hidden">
+    <section className="relative py-10 sm:py-16 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-10">
           <div className="section-label mb-3">{t.future.label}</div>
           <h2 className="font-syne font-bold text-[clamp(1.6rem,3.5vw,3rem)] leading-tight text-zs-text mb-4">
             {t.future.title1}{" "}<span className="text-gradient-cyan">{t.future.title2}</span>
@@ -52,7 +52,7 @@ export default function FutureSection() {
           <p className="font-dm text-zs-muted text-sm sm:text-base leading-relaxed">{t.future.sub}</p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16">
+        <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-10">
           {phases.map((phase, i) => (
             <div key={i} className="glass-card rounded-2xl border border-zs-border p-6 sm:p-8 relative overflow-hidden">
               <div className="absolute top-0 right-0 font-syne font-extrabold text-[70px] sm:text-[80px] leading-none text-zs-faint/15 pointer-events-none select-none">{i + 1}</div>

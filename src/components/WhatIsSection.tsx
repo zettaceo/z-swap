@@ -32,10 +32,10 @@ export default function WhatIsSection() {
   const { t } = useLang();
 
   return (
-    <section id="what-is" className="relative py-16 sm:py-24 overflow-hidden">
+    <section id="what-is" className="relative py-10 sm:py-16 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zs-cyan/15 to-transparent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-10 sm:mb-14">
+        <div className="max-w-3xl mb-6 sm:mb-10">
           <div className="section-label mb-3">{t.whatIs.label}</div>
           <h2 className="font-syne font-bold text-[clamp(1.6rem,3.5vw,3rem)] leading-tight text-zs-text mb-5">
             {t.whatIs.title1}{" "}

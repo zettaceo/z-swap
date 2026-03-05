@@ -17,7 +17,7 @@ export default function LiquiditySection() {
   ];
 
   return (
-    <section className="relative py-16 sm:py-24 overflow-hidden">
+    <section className="relative py-10 sm:py-16 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zs-violet/3 to-transparent pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-14 items-center">

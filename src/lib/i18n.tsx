@@ -2,9 +2,8 @@
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-export type Lang = "en" | "es" | "zh";
+export type Lang = "en" | "pt" | "es" | "zh";
 
-// ─── Explicit interface with string values (not inferred literals) ───────────
 export interface Translation {
   nav: {
     protocol: string; architecture: string; ai: string;
@@ -53,7 +52,6 @@ export interface Translation {
   };
 }
 
-// ─── Translations typed against the interface ────────────────────────────────
 const translations: Record<Lang, Translation> = {
   en: {
     nav: {
@@ -128,6 +126,79 @@ const translations: Record<Lang, Translation> = {
     },
   },
 
+  pt: {
+    nav: {
+      protocol: "Protocolo", architecture: "Arquitetura", ai: "ZION IA",
+      security: "Segurança", ecosystem: "Ecossistema", docs: "Docs", access: "Solicitar Acesso",
+    },
+    hero: {
+      badge: "Ecossistema ZETTA — Camada de Liquidez",
+      line1: "INFRAESTRUTURA", line2: "DE LIQUIDEZ", line3: "INTELIGENTE",
+      sub: "Z-SWAP é uma plataforma de inteligência de liquidez em nível de protocolo — combinando mecânicas de exchange descentralizada, arquitetura multicadeia e análise de mercado assistida por IA em uma camada institucional unificada.",
+      cta1: "Explorar Protocolo", cta2: "Ver Arquitetura",
+      stat1: "Funções do Protocolo", stat2: "Camadas do Sistema",
+      stat3: "Arquitetura Multicadeia", stat4: "Alinhamento Regulatório",
+    },
+    whatIs: {
+      label: "01 — Definição do Protocolo",
+      title1: "Não é uma DEX.", title2: "É um Sistema Operacional Financeiro.",
+      sub: "Z-SWAP é projetado como uma camada de infraestrutura modular dentro do ecossistema ZETTA, com roteamento inteligente, análise por IA e gestão abrangente de riscos, além de liquidação nativa de pagamentos Z-PAY.",
+      reg: "Posicionamento Regulatório",
+      regText: "Z-SWAP é arquitetado com alinhamento regulatório como requisito fundamental, com foco especial em frameworks como VARA (Dubai) e VASP aplicáveis. A plataforma não fornece consultoria de investimento, não garante retornos e não executa transações sem autorização explícita do usuário.",
+    },
+    architecture: {
+      label: "03 — Arquitetura do Sistema",
+      title1: "Visão Geral da", title2: "Arquitetura do Protocolo",
+      sub: "Z-SWAP é construído como uma pilha de infraestrutura em camadas. Cada camada opera independentemente enquanto se comunica através de interfaces de protocolo bem definidas.",
+    },
+    capabilities: {
+      label: "04 — Capacidades Principais",
+      title1: "132 Funções em", title2: "7 Camadas de Protocolo",
+      sub: "Cada camada é operável de forma independente e integra com o ecossistema ZETTA completo.",
+      functions: "funções", roadmap: "ROADMAP",
+    },
+    ai: {
+      label: "05 — Camada de Inteligência",
+      title1: "ZION IA —", title2: "Inteligência Consultiva",
+      sub: "ZION IA é a camada de inteligência analítica do Z-SWAP. Processa dados on-chain, realiza análise de risco e fornece sugestões fundamentadas — mas nunca executa transações sem autorização explícita do usuário.",
+      advisory: "Protocolo Consultivo",
+      advisoryText: "ZION IA opera exclusivamente em modo consultivo. Todas as sugestões requerem revisão e confirmação manual do usuário. Nenhuma execução automatizada ocorre sem ação explícita do usuário.",
+    },
+    security: {
+      label: "06 — Camada de Segurança",
+      title1: "Proteção de Risco", title2: "Multicamada",
+      sub: "Antes de qualquer interação com tokens, o Z-SWAP executa uma pilha de segurança abrangente. Cada token e contrato é avaliado em tempo real — dando aos usuários visibilidade total de risco antes de qualquer transação.",
+    },
+    ecosystem: {
+      label: "07 — Integração do Ecossistema",
+      title1: "Conectado ao", title2: "Ecossistema ZETTA",
+      sub: "Z-SWAP não é uma exchange independente — é a infraestrutura central de liquidez e liquidação para todo o ecossistema ZETTA, incluindo conversões fiat-cripto da Z-PAY.",
+      networkMap: "Mapa de Rede do Ecossistema",
+    },
+    future: {
+      label: "08 — Visão do Protocolo",
+      title1: "Construído para", title2: "Infraestrutura de Longo Prazo",
+      sub: "Z-SWAP é projetado como um protocolo de infraestrutura de longo prazo, não um produto com ciclo de vida curto. O roadmap é estruturado em torno de lançamentos incrementais e estáveis.",
+      phase1: "Fundação", phase2: "Inteligência", phase3: "Ecossistema",
+      inDev: "Em Desenvolvimento", planned: "Planejado", roadmap: "Roadmap",
+    },
+    cta: {
+      label: "09 — Acessar Protocolo",
+      line1: "PRONTO PARA", line2: "CONSTRUIR COM", line3: "Z-SWAP?",
+      sub: "Z-SWAP está atualmente em desenvolvimento como parte do ecossistema ZETTA. Solicite acesso antecipado ou mantenha-se informado sobre o progresso do protocolo.",
+      btn1: "Solicitar Acesso Antecipado", btn2: "Ler Documentação",
+      status: "Status do Protocolo", statusVal: "Em Desenvolvimento",
+      reg: "Foco Regulatório", regVal: "VARA / VASP",
+      eco: "Ecossistema", ecoVal: "Protocolo ZETTA",
+    },
+    footer: {
+      tagline: "Uma camada de infraestrutura de liquidez inteligente dentro do ecossistema ZETTA. Projetada para operações de protocolo de longo prazo.",
+      status: "PROTOCOLO EM DESENVOLVIMENTO", protocol: "Protocolo", ecosystem: "Ecossistema ZETTA",
+      legal: "Z-SWAP é software de infraestrutura. Não constitui consultoria financeira, recomendações de investimento ou garantias de qualquer tipo.",
+      rights: "© 2024 Ecossistema ZETTA. Protocolo Z-SWAP. Todos os direitos reservados.",
+    },
+  },
+
   es: {
     nav: {
       protocol: "Protocolo", architecture: "Arquitectura", ai: "ZION IA",
@@ -164,12 +235,12 @@ const translations: Record<Lang, Translation> = {
       title1: "ZION IA —", title2: "Inteligencia Consultiva",
       sub: "ZION IA es la capa de inteligencia analítica de Z-SWAP. Procesa datos on-chain, realiza análisis de riesgo y proporciona sugerencias informadas — sin ejecutar transacciones sin autorización explícita.",
       advisory: "Protocolo Consultivo",
-      advisoryText: "ZION IA opera exclusivamente en modo consultivo. Todas las sugerencias requieren revisión y confirmación manual del usuario. No ocurre ejecución automatizada sin acción explícita del usuario.",
+      advisoryText: "ZION IA opera exclusivamente en modo consultivo. Todas las sugerencias requieren revisión y confirmación manual del usuario.",
     },
     security: {
       label: "06 — Capa de Seguridad",
       title1: "Protección de Riesgo", title2: "Multicapa",
-      sub: "Antes de cualquier interacción con tokens, Z-SWAP ejecuta una pila de seguridad completa. Cada token y contrato es evaluado en tiempo real.",
+      sub: "Antes de cualquier interacción con tokens, Z-SWAP ejecuta una pila de seguridad completa con visibilidad total del riesgo.",
     },
     ecosystem: {
       label: "07 — Integración del Ecosistema",
@@ -237,7 +308,7 @@ const translations: Record<Lang, Translation> = {
       title1: "ZION AI —", title2: "咨询智能",
       sub: "ZION AI 是 Z-SWAP 的分析智能层，处理链上数据、执行风险分析并提供明智建议 — 但不会在没有明确用户授权的情况下执行任何交易。",
       advisory: "咨询协议",
-      advisoryText: "ZION AI 仅在咨询模式下运行。所有建议都需要用户手动审查和确认。没有明确用户操作，不会发生自动执行。",
+      advisoryText: "ZION AI 仅在咨询模式下运行。所有建议都需要用户手动审查和确认。",
     },
     security: {
       label: "06 — 安全层",
@@ -275,7 +346,6 @@ const translations: Record<Lang, Translation> = {
   },
 };
 
-// ─── Context ──────────────────────────────────────────────────────────────────
 interface LangContextType {
   lang: Lang;
   setLang: (l: Lang) => void;
@@ -290,7 +360,6 @@ const LangContext = createContext<LangContextType>({
 
 export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>("en");
-  // Cast is safe: all three translation objects satisfy Translation interface
   const t: Translation = translations[lang];
   return (
     <LangContext.Provider value={{ lang, setLang, t }}>

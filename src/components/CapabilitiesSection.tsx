@@ -170,11 +170,11 @@ export default function CapabilitiesSection() {
   const c = colorMap[activeLayer.tagColor];
 
   return (
-    <section id="capabilities" className="relative py-16 sm:py-24">
+    <section id="capabilities" className="relative py-10 sm:py-16">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="section-label mb-3">{t.capabilities.label}</div>
-        <div className="flex flex-col lg:flex-row gap-2 lg:gap-0 lg:items-end lg:justify-between mb-8 sm:mb-12">
+        <div className="flex flex-col lg:flex-row gap-2 lg:gap-0 lg:items-end lg:justify-between mb-5 sm:mb-8">
           <h2 className="font-syne font-bold text-[clamp(1.6rem,3.5vw,3rem)] leading-tight text-zs-text">
             {t.capabilities.title1}{" "}
             <span className="text-gradient-cyan">{t.capabilities.title2}</span>

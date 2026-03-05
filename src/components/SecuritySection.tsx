@@ -31,7 +31,7 @@ export default function SecuritySection() {
   const { t } = useLang();
 
   return (
-    <section id="security" className="relative py-16 sm:py-24 overflow-hidden">
+    <section id="security" className="relative py-10 sm:py-16 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
