@@ -110,17 +110,17 @@ export default function HeroSection() {
       <div className="relative z-10 w-full mt-12 sm:mt-16 border-t border-zs-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {[
-            { value: "132", label: t.hero.stat1, suffix: "+" },
-            { value: "7", label: t.hero.stat2, suffix: "" },
-            { value: t.hero.stat3, label: "", suffix: "" },
-            { value: t.hero.stat4, label: t.hero.stat4 === "VARA" ? t.hero.stat4 : "", suffix: "" },
+            { value: "132+", label: t.hero.stat1, color: "text-zs-cyan" },
+            { value: "7",    label: t.hero.stat2, color: "text-zs-cyan" },
+            { value: "Multi",label: t.hero.stat3, color: "text-zs-violet-bright" },
+            { value: "VARA", label: t.hero.stat4, color: "text-zs-gold" },
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className={`font-syne font-bold text-xl sm:text-2xl lg:text-3xl ${i < 2 ? "text-zs-cyan" : i === 2 ? "text-zs-violet-bright" : "text-zs-gold"}`}>
-                {i < 2 ? stat.value + stat.suffix : i === 2 ? "Multi" : "VARA"}
+              <div className={`font-syne font-bold text-xl sm:text-2xl lg:text-3xl ${stat.color}`}>
+                {stat.value}
               </div>
               <div className="font-mono text-[10px] sm:text-xs text-zs-muted tracking-widest uppercase mt-1">
-                {i === 0 ? t.hero.stat1 : i === 1 ? t.hero.stat2 : i === 2 ? t.hero.stat3 : t.hero.stat4}
+                {stat.label}
               </div>
             </div>
           ))}
