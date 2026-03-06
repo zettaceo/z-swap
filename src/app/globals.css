@@ -198,13 +198,59 @@ body {
  * Two-value cascade:
  *   1st value: 100vh  (old browsers, no dvh support — acceptable fallback)
  *   2nd value: 100dvh (modern browsers — overrides 1st value correctly)
- *
- * The `.min-h-dvh` class is declared by Tailwind 3.4, but this rule ensures
- * the cascade always works correctly.
  */
 .min-h-dvh {
   min-height: 100vh;
   min-height: 100dvh;
+}
+
+/* ─── Hero Section — exact viewport height ───────────────────────────────
+ * Uses height (not min-height) so the section is EXACTLY the visible
+ * viewport. Eliminates the "dead space" above the hero content.
+ *
+ * 2-value cascade:
+ *   1. 100vh  — universal fallback
+ *   2. 100dvh — modern Chrome/Safari/Firefox (excludes address bar + nav bar)
+ *
+ * Works hand-in-hand with the flex layout:
+ *   section → flex-col, exact height
+ *   ├── nav-spacer (h-14, real flex item — NOT padding)
+ *   ├── flex-1 content (justify-center → true center, no pt offset)
+ *   └── stats strip (shrink-0)
+ */
+.hero-section {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* ─── Hero Headline — smooth responsive scaling ──────────────────────────
+ * clamp(MIN, PREFERRED, MAX):
+ *   320px → 36px (2.25rem)  — small mobile
+ *   390px → 40px             — iPhone 14 Pro
+ *   768px → 73px             — tablet
+ *  1280px → 122px            — desktop
+ *  1536px → 144px (9rem)    — large desktop, capped
+ *
+ * Result: zero breakpoint jumps, perfectly fluid scaling.
+ */
+.hero-headline {
+  font-size: clamp(2.25rem, 9.5vw + 0.1rem, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.025em;
+}
+
+/* ─── Premium glow utilities ─────────────────────────────────────────────*/
+.glow-cyan {
+  box-shadow: 0 0 28px rgba(0, 232, 255, 0.35);
+}
+.glow-cyan-sm {
+  box-shadow: 0 0 16px rgba(0, 232, 255, 0.2);
+}
+.text-gradient-cyan-vivid {
+  background: linear-gradient(135deg, #00E8FF 0%, #00B8CC 40%, #9F5FFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Scrollbar hide utility for horizontal scroll containers */
