@@ -71,7 +71,7 @@ export default function EcosystemSection() {
             {t.ecosystem.title1}{" "}
             <span className="text-gradient-cyan">{t.ecosystem.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed max-w-md">{t.ecosystem.sub}</p>
+          <p className="font-dm text-sm sm:text-base text-zs-muted max-w-prose leading-[1.65] text-pretty">{t.ecosystem.sub}</p>
         </div>
 
         {/* Integration cards + Network map — stacked on mobile, side-by-side from lg */}

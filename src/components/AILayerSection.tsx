@@ -70,7 +70,7 @@ export default function AILayerSection() {
             {t.ai.title1}{" "}
             <span className="text-gradient-gold">{t.ai.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed max-w-md">{t.ai.sub}</p>
+          <p className="font-dm text-sm sm:text-base text-zs-muted max-w-prose leading-[1.65] text-pretty">{t.ai.sub}</p>
         </div>
 
         {/* Two-column layout */}

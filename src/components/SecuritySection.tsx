@@ -50,7 +50,7 @@ export default function SecuritySection() {
               {t.security.title1}{" "}
               <span className="text-zs-red">{t.security.title2}</span>
             </h2>
-            <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed mb-6 sm:mb-8">
+            <p className="font-dm text-sm sm:text-base text-zs-muted max-w-prose leading-[1.65] text-pretty mb-6 sm:mb-8">
               {t.security.sub}
             </p>
 

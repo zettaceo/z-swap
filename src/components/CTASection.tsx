@@ -23,7 +23,7 @@ export default function CTASection() {
           <span className="block text-zs-text   text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl">{t.cta.line3}</span>
         </h2>
 
-        <p className="font-dm text-sm sm:text-base md:text-lg text-zs-muted max-w-xl mx-auto leading-relaxed mb-7 sm:mb-10 text-left sm:text-center">
+        <p className="font-dm text-sm sm:text-base md:text-lg text-zs-muted max-w-prose mx-auto leading-[1.65] mb-7 sm:mb-10 text-pretty">
           {t.cta.sub}
         </p>
 

@@ -36,7 +36,7 @@ export default function Footer() {
                 <div className="font-mono text-[8px] text-zs-muted tracking-[0.18em] uppercase">ZETTA PROTOCOL</div>
               </div>
             </div>
-            <p className="font-dm text-xs sm:text-sm text-zs-muted leading-relaxed mb-3.5">
+            <p className="font-dm text-xs sm:text-sm text-zs-muted max-w-prose leading-[1.65] text-pretty mb-3.5">
               {t.footer.tagline}
             </p>
             <div className="flex items-center gap-2">

@@ -53,7 +53,7 @@ export default function CapabilitiesSection() {
             {t.capabilities.title1}{" "}
             <span className="text-gradient-cyan">{t.capabilities.title2}</span>
           </h2>
-          <p className="font-dm text-xs sm:text-sm text-zs-muted max-w-sm leading-relaxed">{t.capabilities.sub}</p>
+          <p className="font-dm text-xs sm:text-sm text-zs-muted max-w-prose leading-[1.65] text-pretty">{t.capabilities.sub}</p>
         </div>
 
         <div className="flex flex-col lg:grid lg:grid-cols-[200px_1fr] xl:grid-cols-[220px_1fr] gap-4 sm:gap-6">
@@ -101,7 +101,7 @@ export default function CapabilitiesSection() {
               </div>
             </div>
 
-            <p className="font-dm text-xs sm:text-sm text-zs-muted leading-relaxed mb-4 sm:mb-6">{layer.desc}</p>
+            <p className="font-dm text-xs sm:text-sm text-zs-muted max-w-prose leading-[1.65] text-pretty mb-4 sm:mb-6">{layer.desc}</p>
 
             {/* Feature chips — 1 col on mobile, 2 from sm */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">

@@ -43,7 +43,7 @@ export default function WhatIsSection() {
             {t.whatIs.title1}{" "}
             <span className="text-gradient-cyan">{t.whatIs.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base md:text-lg text-zs-muted leading-relaxed">{t.whatIs.sub}</p>
+          <p className="font-dm text-sm sm:text-base md:text-lg text-zs-muted max-w-prose leading-[1.65] text-pretty">{t.whatIs.sub}</p>
         </div>
 
         {/* Pillar grid — 1 col → 2 col → 3 col */}
@@ -67,7 +67,7 @@ export default function WhatIsSection() {
           <div className="w-0.5 sm:w-1 bg-gradient-to-b from-zs-cyan to-zs-violet rounded-full flex-shrink-0" />
           <div>
             <div className="font-mono text-[10px] sm:text-xs text-zs-cyan tracking-widest uppercase mb-2">{t.whatIs.reg}</div>
-            <p className="font-dm text-xs sm:text-sm text-zs-muted leading-relaxed">{t.whatIs.regText}</p>
+            <p className="font-dm text-xs sm:text-sm text-zs-muted max-w-prose leading-[1.65] text-pretty">{t.whatIs.regText}</p>
           </div>
         </div>
       </div>

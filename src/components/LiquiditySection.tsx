@@ -32,7 +32,7 @@ export default function LiquiditySection() {
               The Smart Routing{" "}
               <span className="text-gradient-cyan">Engine</span>
             </h2>
-            <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed mb-6 sm:mb-8">
+            <p className="font-dm text-sm sm:text-base text-zs-muted max-w-prose leading-[1.65] text-pretty mb-6 sm:mb-8">
               Z-SWAP evaluates all available liquidity paths across internal pools and external aggregations to deliver optimal execution prices with minimum slippage and MEV protection.
             </p>
 

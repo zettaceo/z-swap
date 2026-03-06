@@ -23,6 +23,10 @@ const config: Config = {
         svh: "100svh",
         lvh: "100lvh",
       },
+      maxWidth: {
+        prose: "65ch",
+        "prose-wide": "75ch",
+      },
       colors: {
         zs: {
           bg: "#04040C",

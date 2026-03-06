@@ -48,7 +48,7 @@ export default function FutureSection() {
             {t.future.title1}{" "}
             <span className="text-gradient-cyan">{t.future.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed text-left sm:text-center">{t.future.sub}</p>
+          <p className="font-dm text-sm sm:text-base text-zs-muted max-w-prose mx-auto leading-[1.65] text-pretty">{t.future.sub}</p>
         </div>
 
         {/* Phase cards — 1 col mobile, 3 from lg */}

@@ -16,16 +16,12 @@
 * { box-sizing: border-box; padding: 0; margin: 0; }
 
 /*
- * ─── TEXT RENDERING — the root cause of "Word PDF" effect ──────────────────
+ * ─── TYPOGRAPHY PREMIUM — evita efeito "PDF esticado" ──────────────────────
  *
- * `text-center` on long paragraphs forces the browser to distribute leftover
- * whitespace across word gaps — exactly like Word's "Justify" mode.
- *
- * Fix: `text-wrap: pretty`  → browser chooses line breaks that minimize orphans
- *       and avoids stretching word gaps. Supported in Chrome 117+, Safari 17.4+.
- *      `text-wrap: balance` → headings get equal-length lines. No more triangles.
- *
- * These are zero-gambiarra, spec-correct solutions.
+ * text-wrap: pretty  → quebras de linha naturais, sem esticar espaços entre palavras
+ * text-wrap: balance → títulos com linhas equilibradas
+ * hyphens: auto      → hifenização suave em palavras longas
+ * max-width: 65ch    → largura ótima de leitura (45–75 caracteres por linha)
  */
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
@@ -33,6 +29,14 @@ h1, h2, h3, h4, h5, h6 {
 
 p, li, blockquote {
   text-wrap: pretty;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
+/* Prose containers — constrain width for premium readability */
+.prose-optimal {
+  max-width: min(100%, 65ch);
 }
 
 html {
@@ -53,6 +57,9 @@ body {
   padding-right: var(--sar);
   /* iOS momentum scrolling */
   -webkit-overflow-scrolling: touch;
+  /* Premium typography rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ─── Respect prefers-reduced-motion ────────────────────────────────────── */

@@ -84,25 +84,18 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative flex flex-col min-h-screen min-h-dvh overflow-x-hidden grid-bg">
+    <section className="relative flex flex-col overflow-x-hidden grid-bg
+      min-h-[min(100dvh,580px)] sm:min-h-[min(100dvh,660px)] lg:min-h-[min(100dvh,760px)]">
       <canvas ref={canvasRef} className="particle-canvas absolute inset-0 w-full h-full opacity-55 pointer-events-auto" aria-hidden="true" />
       <div className="absolute top-1/3 left-1/4 w-64 sm:w-96 lg:w-[520px] h-64 sm:h-96 lg:h-[520px] rounded-full bg-zs-violet/10 blur-[100px] lg:blur-[130px] animate-pulse-slow pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 rounded-full bg-zs-cyan/[0.06] blur-[80px] lg:blur-[100px] animate-pulse-slow pointer-events-none" style={{ animationDelay: "2s" }} />
 
-      {/*
-       * ─── LAYOUT FIX ──────────────────────────────────────────────────────
-       * ROOT CAUSE of dead space: `flex-1` with no `justify-center` = content
-       * anchored to top with huge empty area below it.
-       *
-       * FIX: add `justify-center` so content is vertically centered in the
-       * flex-1 area. Use `pt-14` (56px = nav height) as minimum top clearance
-       * so content never slides behind the fixed nav bar.
-       * ─────────────────────────────────────────────────────────────────────
-       */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 sm:px-8 lg:px-12 pt-14 pb-6">
+      {/* Content — compact vertical rhythm, no giant empty space */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center
+        px-4 xs:px-6 sm:px-8 lg:px-12 pt-16 sm:pt-20 pb-4 sm:pb-6">
 
         {/* Badge */}
-        <div className="mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+        <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
           <div className="h-px w-6 sm:w-10 bg-zs-cyan/40" />
           <span className="font-mono text-[9px] sm:text-[10px] lg:text-[11px] text-zs-cyan/70 border border-zs-cyan/20 px-2.5 py-1 rounded-full bg-zs-cyan/5 tracking-widest uppercase whitespace-nowrap">
             {t.hero.badge}
@@ -111,20 +104,19 @@ export default function HeroSection() {
         </div>
 
         {/* Headline */}
-        <h1 className="font-syne font-extrabold leading-[0.88] tracking-tight mb-4 sm:mb-6">
-          <span className="block text-zs-text      text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[7.5rem]">{t.hero.line1}</span>
-          <span className="block text-gradient-cyan text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[7.5rem]">{t.hero.line2}</span>
-          <span className="block text-zs-text      text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[7.5rem]">{t.hero.line3}</span>
+        <h1 className="font-syne font-extrabold leading-[0.9] tracking-tight mb-3 sm:mb-4">
+          <span className="block text-zs-text      text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">{t.hero.line1}</span>
+          <span className="block text-gradient-cyan text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">{t.hero.line2}</span>
+          <span className="block text-zs-text      text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">{t.hero.line3}</span>
         </h1>
 
-        {/* Subtitle */}
-        {/* Subtitle — left on mobile avoids word-gap stretch, centered on sm+ */}
-        <p className="font-dm text-sm sm:text-base md:text-lg text-zs-muted max-w-xs sm:max-w-lg lg:max-w-2xl leading-relaxed mb-6 sm:mb-8 text-left sm:text-center">
+        {/* Subtitle — 65ch = optimal reading width, text-pretty avoids stretched word gaps */}
+        <p className="font-dm text-[15px] sm:text-base md:text-[17px] text-zs-muted max-w-[min(100%,65ch)] mx-auto leading-[1.65] mb-5 sm:mb-6 text-pretty">
           {t.hero.sub}
         </p>
 
-        {/* CTAs — always flex-row */}
-        <div className="flex flex-row items-center gap-3 sm:gap-4">
+        {/* CTAs */}
+        <div className="flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-4">
           <a href="#what-is" className="flex-shrink-0 whitespace-nowrap px-5 sm:px-7 lg:px-8 py-2.5 sm:py-3 lg:py-3.5 bg-zs-cyan text-zs-bg font-syne font-bold text-[11px] sm:text-xs lg:text-sm tracking-widest uppercase rounded-xl hover:bg-zs-cyan-dim transition-colors duration-200">
             {t.hero.cta1}
           </a>
@@ -134,9 +126,9 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Stats strip — always 4 equal columns */}
-      <div className="relative z-10 flex-shrink-0 border-t border-zs-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-5 grid grid-cols-4">
+      {/* Stats strip — integrated, premium feel */}
+      <div className="relative z-10 flex-shrink-0 border-t border-zs-border/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3 sm:py-4 grid grid-cols-4 gap-2 sm:gap-4">
           {([
             { value: "132+",  label: t.hero.stat1, color: "text-zs-cyan"          },
             { value: "7",     label: t.hero.stat2, color: "text-zs-cyan"          },
