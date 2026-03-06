@@ -118,7 +118,8 @@ export default function HeroSection() {
         </h1>
 
         {/* Subtitle */}
-        <p className="font-dm text-sm sm:text-base md:text-lg text-zs-muted max-w-xs sm:max-w-lg lg:max-w-2xl leading-relaxed mb-6 sm:mb-8">
+        {/* Subtitle — left on mobile avoids word-gap stretch, centered on sm+ */}
+        <p className="font-dm text-sm sm:text-base md:text-lg text-zs-muted max-w-xs sm:max-w-lg lg:max-w-2xl leading-relaxed mb-6 sm:mb-8 text-left sm:text-center">
           {t.hero.sub}
         </p>
 

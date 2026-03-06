@@ -62,7 +62,7 @@ export default function ArchitectureSection() {
             {t.architecture.title1}{" "}
             <span className="text-gradient-cyan">{t.architecture.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed">{t.architecture.sub}</p>
+          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed text-left sm:text-center">{t.architecture.sub}</p>
         </div>
 
         {/*
