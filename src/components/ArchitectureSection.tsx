@@ -50,19 +50,21 @@ export default function ArchitectureSection() {
   ];
 
   return (
-    <section id="architecture" className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+    <section id="architecture" className="relative py-14 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="section-label mb-3">{t.architecture.label}</div>
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-zs-text mb-4">
+        <div className="text-center max-w-4xl mx-auto mb-9 sm:mb-12 lg:mb-14">
+          <div className="section-label mb-4">{t.architecture.label}</div>
+          <h2 className="font-syne font-bold text-[clamp(1.95rem,5vw,3.9rem)] leading-[0.98] tracking-[-0.015em] text-zs-text mb-5">
             {t.architecture.title1}{" "}
             <span className="text-gradient-cyan">{t.architecture.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed text-left sm:text-center">{t.architecture.sub}</p>
+          <p className="font-dm text-[clamp(0.96rem,1.7vw,1.12rem)] text-zs-muted/95 leading-relaxed sm:leading-[1.75] text-left sm:text-center">
+            {t.architecture.sub}
+          </p>
         </div>
 
         {/*
@@ -71,20 +73,20 @@ export default function ArchitectureSection() {
          * We replace it with a clean vertical card stack that is perfectly
          * readable at every size. Hidden on md+ where the real SVG appears.
          */}
-        <div className="md:hidden glass-card rounded-2xl border border-zs-border overflow-hidden mb-6">
+        <div className="md:hidden glass-card rounded-2xl border border-zs-border overflow-hidden mb-7">
           <div className="p-3 border-b border-zs-border">
-            <span className="font-mono text-[9px] text-zs-muted tracking-widest uppercase">Protocol Stack — 5 Layers</span>
+            <span className="font-mono text-[10px] text-zs-muted tracking-[0.12em] uppercase">Protocol Stack — 5 Layers</span>
           </div>
           <div className="divide-y divide-zs-faint/20">
             {archLayers.map((layer, li) => (
-              <div key={layer.id} className="p-3 sm:p-4">
+              <div key={layer.id} className="p-3.5 sm:p-4">
                 {/* Layer header */}
                 <div className="flex items-center gap-2 mb-2.5">
                   <div className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0"
                     style={{ background: `${layer.color}0.12)`, border: `1px solid ${layer.color}0.3)` }}>
-                    <span className="font-mono text-[8px]" style={{ color: `${layer.color}0.9)` }}>{String(li+1).padStart(2,"0")}</span>
+                    <span className="font-mono text-[9px]" style={{ color: `${layer.color}0.9)` }}>{String(li+1).padStart(2,"0")}</span>
                   </div>
-                  <span className="font-mono text-[9px] tracking-widest uppercase" style={{ color: `${layer.color}0.7)` }}>
+                  <span className="font-mono text-[10px] tracking-[0.1em] uppercase" style={{ color: `${layer.color}0.7)` }}>
                     {layer.label}
                   </span>
                 </div>
@@ -93,7 +95,7 @@ export default function ArchitectureSection() {
                   {layer.items.map((item) => (
                     <div key={item} className="px-2.5 py-1.5 rounded-md text-center"
                       style={{ background: `${layer.color}0.06)`, border: `1px solid ${layer.color}0.2)` }}>
-                      <span className="font-mono text-[10px] sm:text-[11px]" style={{ color: `${layer.color}0.85)` }}>
+                      <span className="font-mono text-[11px] sm:text-xs" style={{ color: `${layer.color}0.85)` }}>
                         {item}
                       </span>
                     </div>
@@ -189,13 +191,13 @@ export default function ArchitectureSection() {
         </div>
 
         {/* Layer summary cards — 2 cols on mobile, 5 on desktop */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 mb-6 sm:mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 mb-7 sm:mb-9">
           {layerCards.map((item, i) => (
-            <div key={i} className="glass-card p-3 sm:p-4 rounded-xl border border-zs-border text-center">
-              <div className={`font-mono text-[10px] sm:text-xs tracking-widest uppercase mb-1.5 font-bold ${colorClass[item.color]}`}>
+            <div key={i} className="glass-card p-3.5 sm:p-4 rounded-xl border border-zs-border text-center">
+              <div className={`font-mono text-[10px] sm:text-xs tracking-[0.1em] uppercase mb-1.5 font-bold ${colorClass[item.color]}`}>
                 {item.layer}
               </div>
-              <div className="font-dm text-[10px] sm:text-xs text-zs-text/70 leading-snug">{item.desc}</div>
+              <div className="font-dm text-[11px] sm:text-xs text-zs-text/75 leading-snug">{item.desc}</div>
             </div>
           ))}
         </div>
@@ -204,12 +206,12 @@ export default function ArchitectureSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
           <div className="glass-card rounded-2xl border border-zs-border p-4 sm:p-6 min-w-0">
             <div className="flex items-center justify-between mb-4 gap-2">
-              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase">
+              <div className="font-mono text-[10px] sm:text-[11px] text-zs-muted tracking-[0.12em] uppercase">
                 Multi-Chain Routing — Live
               </div>
               <div className="flex items-center gap-1.5 flex-shrink-0">
                 <div className="w-1.5 h-1.5 rounded-full bg-zs-green pulse-dot" />
-                <span className="font-mono text-[9px] text-zs-green/70">ROUTING</span>
+                <span className="font-mono text-[10px] text-zs-green/70">ROUTING</span>
               </div>
             </div>
             <MultiChainRouting />
@@ -217,11 +219,11 @@ export default function ArchitectureSection() {
 
           <div className="flex flex-col gap-3 min-w-0">
             <div className="section-label mb-1">Cross-Chain Settlement</div>
-            <h3 className="font-syne font-bold text-lg sm:text-xl lg:text-2xl text-zs-text leading-tight">
+            <h3 className="font-syne font-bold text-xl sm:text-2xl lg:text-3xl text-zs-text leading-tight tracking-[-0.01em]">
               One Router.{" "}
               <span className="text-gradient-cyan">Every Chain.</span>
             </h3>
-            <p className="font-dm text-sm text-zs-muted leading-relaxed">
+            <p className="font-dm text-base text-zs-muted/95 leading-relaxed">
               Z-SWAP routes all swaps through a unified settlement engine across supported networks. Packets flow from the source chain through the Z-SWAP Router and settle on the destination chain in a single atomic operation.
             </p>
             {[
@@ -231,9 +233,9 @@ export default function ArchitectureSection() {
             ].map((item, i) => (
               <div key={i} className="flex gap-3 p-3 rounded-xl bg-zs-bg-3/50 border border-zs-faint/30">
                 <div className="w-1.5 h-1.5 rounded-full bg-zs-cyan flex-shrink-0 mt-1.5" />
-                <div>
-                  <div className="font-syne font-semibold text-xs sm:text-sm text-zs-text mb-0.5">{item.label}</div>
-                  <div className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-relaxed">{item.desc}</div>
+                  <div>
+                  <div className="font-syne font-semibold text-sm sm:text-base text-zs-text mb-0.5">{item.label}</div>
+                  <div className="font-dm text-sm text-zs-muted/85 leading-relaxed">{item.desc}</div>
                 </div>
               </div>
             ))}

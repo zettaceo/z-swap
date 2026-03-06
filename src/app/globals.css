@@ -129,15 +129,16 @@ body {
 .tag-badge {
   font-family: var(--font-dm-mono);
   font-size: 10px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 /* Section label */
 .section-label {
   font-family: var(--font-dm-mono);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  font-weight: 500;
   text-transform: uppercase;
   color: #00E8FF;
 }

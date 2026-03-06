@@ -42,18 +42,18 @@ export default function CapabilitiesSection() {
   const c = colorMap[layer.tagColor];
 
   return (
-    <section id="capabilities" className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+    <section id="capabilities" className="relative py-14 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="section-label mb-3">{t.capabilities.label}</div>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-2 mb-6 sm:mb-10">
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-zs-text">
+        <div className="section-label mb-4">{t.capabilities.label}</div>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3 mb-7 sm:mb-10">
+          <h2 className="font-syne font-bold text-[clamp(1.95rem,5vw,3.9rem)] leading-[0.98] tracking-[-0.015em] text-zs-text">
             {t.capabilities.title1}{" "}
             <span className="text-gradient-cyan">{t.capabilities.title2}</span>
           </h2>
-          <p className="font-dm text-xs sm:text-sm text-zs-muted max-w-sm leading-relaxed">{t.capabilities.sub}</p>
+          <p className="font-dm text-sm sm:text-base text-zs-muted/95 max-w-xl leading-relaxed">{t.capabilities.sub}</p>
         </div>
 
         <div className="flex flex-col lg:grid lg:grid-cols-[200px_1fr] xl:grid-cols-[220px_1fr] gap-4 sm:gap-6">
@@ -69,18 +69,18 @@ export default function CapabilitiesSection() {
                   onClick={() => setActive(l.id)}
                   aria-label={`${l.title} — ${l.count} functions`}
                   aria-pressed={isActive}
-                  className={`flex-shrink-0 text-left px-3 sm:px-4 py-2.5 rounded-xl border transition-all duration-200 ${
+                  className={`flex-shrink-0 text-left px-3.5 sm:px-4 py-2.5 rounded-xl border transition-all duration-200 ${
                     isActive
                       ? `glass-card ${lc.active} ${lc.text}`
                       : "border-transparent text-zs-muted hover:text-zs-text hover:bg-zs-faint/20"
                   }`}
                 >
-                  <div className={`font-mono text-[9px] tracking-widest uppercase mb-0.5 ${isActive ? lc.text : "text-zs-faint"}`}>
+                  <div className={`font-mono text-[10px] tracking-[0.1em] uppercase mb-0.5 ${isActive ? lc.text : "text-zs-faint"}`}>
                     {l.tag}
                   </div>
-                  <div className="font-syne font-semibold text-xs sm:text-sm whitespace-nowrap">{l.title}</div>
+                  <div className="font-syne font-semibold text-sm whitespace-nowrap">{l.title}</div>
                   {isActive && (
-                    <div className="font-mono text-[9px] mt-0.5 opacity-60">{l.count} {t.capabilities.functions}</div>
+                    <div className="font-mono text-[10px] mt-0.5 opacity-65">{l.count} {t.capabilities.functions}</div>
                   )}
                 </button>
               );
@@ -89,26 +89,26 @@ export default function CapabilitiesSection() {
 
           {/* Active layer panel */}
           <div className={`glass-card rounded-2xl border ${c.active} p-4 sm:p-6 lg:p-8 min-w-0`}>
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4 sm:mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5 sm:mb-6">
               <div>
-                <span className={`inline-block font-mono text-[10px] px-2.5 py-1 rounded-full border ${c.bg} ${c.border} ${c.text} mb-2 tracking-widest uppercase`}>
+                <span className={`inline-block font-mono text-[10px] px-2.5 py-1 rounded-full border ${c.bg} ${c.border} ${c.text} mb-2 tracking-[0.1em] uppercase`}>
                   {layer.tag}
                 </span>
-                <h3 className="font-syne font-bold text-lg sm:text-xl lg:text-2xl text-zs-text">{layer.title}</h3>
+                <h3 className="font-syne font-bold text-xl sm:text-2xl lg:text-3xl text-zs-text tracking-[-0.01em]">{layer.title}</h3>
               </div>
-              <div className="font-mono text-[10px] text-zs-muted border border-zs-border rounded-lg px-3 py-1.5 self-start whitespace-nowrap">
+              <div className="font-mono text-[11px] text-zs-muted border border-zs-border rounded-lg px-3 py-1.5 self-start whitespace-nowrap">
                 {layer.count} {t.capabilities.functions}
               </div>
             </div>
 
-            <p className="font-dm text-xs sm:text-sm text-zs-muted leading-relaxed mb-4 sm:mb-6">{layer.desc}</p>
+            <p className="font-dm text-sm sm:text-base text-zs-muted/90 leading-relaxed mb-4 sm:mb-6">{layer.desc}</p>
 
             {/* Feature chips — 1 col on mobile, 2 from sm */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
               {layer.features.map((feat, i) => (
                 <div key={i} className="flex items-center gap-2 p-2.5 sm:p-3 rounded-lg bg-zs-bg-3/60 border border-zs-faint/40 hover:border-zs-faint/70 transition-colors">
                   <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.dot}`} />
-                  <span className="font-dm text-[11px] sm:text-xs text-zs-text/85 leading-snug">{feat}</span>
+                  <span className="font-dm text-xs sm:text-sm text-zs-text/88 leading-snug">{feat}</span>
                 </div>
               ))}
             </div>

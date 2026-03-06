@@ -60,18 +60,20 @@ export default function EcosystemSection() {
   });
 
   return (
-    <section id="ecosystem" className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+    <section id="ecosystem" className="relative py-14 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="section-label mb-3">{t.ecosystem.label}</div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-3 mb-8 sm:mb-12">
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-zs-text">
+        <div className="section-label mb-4">{t.ecosystem.label}</div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-3 mb-9 sm:mb-12">
+          <h2 className="font-syne font-bold text-[clamp(1.95rem,5vw,3.9rem)] leading-[0.98] tracking-[-0.015em] text-zs-text">
             {t.ecosystem.title1}{" "}
             <span className="text-gradient-cyan">{t.ecosystem.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed max-w-md">{t.ecosystem.sub}</p>
+          <p className="font-dm text-[clamp(0.96rem,1.65vw,1.1rem)] text-zs-muted/95 leading-relaxed sm:leading-[1.75] max-w-xl">
+            {t.ecosystem.sub}
+          </p>
         </div>
 
         {/* Integration cards + Network map — stacked on mobile, side-by-side from lg */}
@@ -92,17 +94,17 @@ export default function EcosystemSection() {
                 >
                   <div className="flex items-center gap-2 mb-2.5 min-w-0">
                     <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.dot} ${item.highlight ? "pulse-dot" : ""}`} />
-                    <span className={`font-mono text-[9px] sm:text-[10px] tracking-widest uppercase font-bold truncate ${c.text}`}>
+                    <span className={`font-mono text-[10px] sm:text-[11px] tracking-[0.1em] uppercase font-bold ${c.text}`}>
                       {item.type}
                     </span>
                     {item.highlight && (
-                      <span className="ml-auto font-mono text-[8px] text-zs-green/70 border border-zs-green/30 rounded px-1.5 py-0.5 flex-shrink-0">
+                      <span className="ml-auto font-mono text-[9px] text-zs-green/70 border border-zs-green/30 rounded px-1.5 py-0.5 flex-shrink-0">
                         KEY
                       </span>
                     )}
                   </div>
-                  <div className="font-syne font-semibold text-xs sm:text-sm text-zs-text mb-1.5 truncate">{item.name}</div>
-                  <div className="font-dm text-[11px] sm:text-xs text-zs-muted/85 leading-relaxed">{item.desc}</div>
+                  <div className="font-syne font-semibold text-sm sm:text-base text-zs-text mb-1.5 leading-snug">{item.name}</div>
+                  <div className="font-dm text-sm text-zs-muted/85 leading-relaxed">{item.desc}</div>
                 </div>
               );
             })}
@@ -111,12 +113,12 @@ export default function EcosystemSection() {
           {/* Network map — SVG scales via viewBox, never overflows */}
           <div className="glass-card rounded-2xl border border-zs-border overflow-hidden min-w-0">
             <div className="px-4 sm:px-5 py-3 border-b border-zs-border flex items-center justify-between gap-2">
-              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase truncate">
+              <div className="font-mono text-[10px] sm:text-[11px] text-zs-muted tracking-[0.1em] uppercase truncate">
                 {t.ecosystem.networkMap}
               </div>
               <div className="flex items-center gap-1.5 flex-shrink-0">
                 <div className="w-1.5 h-1.5 rounded-full bg-zs-green pulse-dot" />
-                <span className="font-mono text-[9px] text-zs-green/70">LIVE</span>
+                <span className="font-mono text-[10px] text-zs-green/70">LIVE</span>
               </div>
             </div>
 
@@ -132,16 +134,16 @@ export default function EcosystemSection() {
                   <div key={n.id} className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl border"
                     style={{ borderColor: `${pts[n.id]?.color ?? '#1A1A35'}30`, background: `${pts[n.id]?.color ?? '#1A1A35'}08` }}>
                     <div className="w-2 h-2 rounded-full" style={{ background: pts[n.id]?.color ?? '#1A1A35' }} />
-                    <span className="font-mono text-[9px] font-bold text-center leading-tight" style={{ color: pts[n.id]?.color ?? '#E2E2F0' }}>
+                    <span className="font-mono text-[10px] font-bold text-center leading-tight" style={{ color: pts[n.id]?.color ?? '#E2E2F0' }}>
                       {n.label}
                     </span>
-                    <span className="font-mono text-[8px] text-zs-muted text-center leading-tight">{n.sub}</span>
+                    <span className="font-mono text-[9px] text-zs-muted text-center leading-tight">{n.sub}</span>
                   </div>
                 ))}
               </div>
               <div className="mt-2 pt-2 border-t border-zs-faint/20 flex items-center justify-center gap-1.5">
                 <div className="w-1.5 h-1.5 rounded-full bg-zs-cyan pulse-dot" />
-                <span className="font-mono text-[8px] text-zs-muted">Z-SWAP acts as central liquidity hub</span>
+                <span className="font-mono text-[9px] text-zs-muted">Z-SWAP acts as central liquidity hub</span>
               </div>
             </div>
 
@@ -244,7 +246,7 @@ export default function EcosystemSection() {
             {/* Z-PAY callout */}
             <div className="px-4 sm:px-5 py-3 border-t border-zs-border bg-zs-green/[0.03] flex items-start gap-2.5">
               <div className="w-1.5 h-1.5 rounded-full bg-zs-green mt-1 flex-shrink-0 pulse-dot" />
-              <p className="font-dm text-[10px] sm:text-xs text-zs-muted leading-relaxed">
+              <p className="font-dm text-[11px] sm:text-sm text-zs-muted leading-relaxed">
                 <span className="text-zs-green font-semibold">Z-PAY integration: </span>
                 All Z-PAY fiat↔crypto conversions route through Z-SWAP&apos;s liquidity engine — the settlement backbone of ZETTA payments.
               </p>

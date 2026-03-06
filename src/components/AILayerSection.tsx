@@ -58,19 +58,21 @@ export default function AILayerSection() {
   }, [visible, prefersReduced]);
 
   return (
-    <section id="ai-layer" className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+    <section id="ai-layer" className="relative py-14 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zs-gold/[0.02] to-transparent pointer-events-none" />
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-zs-gold/15 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="section-label mb-3">{t.ai.label}</div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-3 mb-8 sm:mb-12">
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-zs-text">
+        <div className="section-label mb-4">{t.ai.label}</div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-3 mb-9 sm:mb-12">
+          <h2 className="font-syne font-bold text-[clamp(1.95rem,5vw,3.9rem)] leading-[0.98] tracking-[-0.015em] text-zs-text">
             {t.ai.title1}{" "}
             <span className="text-gradient-gold">{t.ai.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed max-w-md">{t.ai.sub}</p>
+          <p className="font-dm text-[clamp(0.96rem,1.65vw,1.1rem)] text-zs-muted/95 leading-relaxed sm:leading-[1.75] max-w-xl">
+            {t.ai.sub}
+          </p>
         </div>
 
         {/* Two-column layout */}
@@ -82,18 +84,18 @@ export default function AILayerSection() {
               <div className="w-2.5 h-2.5 rounded-full bg-zs-red/60" aria-hidden="true" />
               <div className="w-2.5 h-2.5 rounded-full bg-zs-gold/60" aria-hidden="true" />
               <div className="w-2.5 h-2.5 rounded-full bg-zs-green/60" aria-hidden="true" />
-              <span className="ml-2 font-mono text-[9px] sm:text-[10px] text-zs-muted truncate">
+              <span className="ml-2 font-mono text-[10px] sm:text-[11px] text-zs-muted truncate tracking-[0.08em]">
                 ZION AI — Analysis Terminal
               </span>
             </div>
             <div
-              className="p-4 sm:p-5 font-mono text-[10px] sm:text-[11px] leading-[1.65] h-64 sm:h-80 lg:h-96 overflow-y-auto"
+              className="p-4 sm:p-5 font-mono text-[11px] sm:text-xs leading-[1.7] h-64 sm:h-80 lg:h-96 overflow-y-auto"
               role="log"
               aria-label="ZION AI terminal output"
               aria-live="polite"
             >
               {terminalLines.slice(0, visible).map((line, i) => (
-                <div key={i} className={`${lineColor[line.type]} break-all`}>{line.text}</div>
+                <div key={i} className={`${lineColor[line.type]} break-words`}>{line.text}</div>
               ))}
               {visible < terminalLines.length && (
                 <span className="inline-block w-1.5 h-3.5 bg-zs-cyan/70 terminal-cursor" aria-hidden="true" />
@@ -112,10 +114,10 @@ export default function AILayerSection() {
                     </span>
                   </div>
                   <div className="min-w-0">
-                    <h4 className="font-syne font-semibold text-xs sm:text-sm text-zs-text mb-1 group-hover:text-zs-gold transition-colors">
+                    <h4 className="font-syne font-semibold text-sm sm:text-base text-zs-text mb-1 group-hover:text-zs-gold transition-colors">
                       {cap.title}
                     </h4>
-                    <p className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-relaxed">{cap.desc}</p>
+                    <p className="font-dm text-sm text-zs-muted/85 leading-relaxed">{cap.desc}</p>
                   </div>
                 </div>
               </div>
@@ -123,10 +125,10 @@ export default function AILayerSection() {
 
             {/* Advisory disclaimer */}
             <div className="p-3.5 sm:p-4 rounded-xl border border-zs-gold/20 bg-zs-gold/[0.04]">
-              <div className="font-mono text-[9px] sm:text-[10px] text-zs-gold tracking-widest uppercase mb-1.5">
+              <div className="font-mono text-[10px] sm:text-[11px] text-zs-gold tracking-[0.12em] uppercase mb-1.5">
                 {t.ai.advisory}
               </div>
-              <p className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-relaxed">
+              <p className="font-dm text-sm text-zs-muted/85 leading-relaxed">
                 {t.ai.advisoryText}
               </p>
             </div>

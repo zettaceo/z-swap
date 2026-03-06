@@ -37,41 +37,43 @@ export default function FutureSection() {
   ];
 
   return (
-    <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+    <section className="relative py-14 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="section-label mb-3">{t.future.label}</div>
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-zs-text mb-4">
+        <div className="text-center max-w-4xl mx-auto mb-9 sm:mb-12 lg:mb-14">
+          <div className="section-label mb-4">{t.future.label}</div>
+          <h2 className="font-syne font-bold text-[clamp(1.95rem,5vw,3.9rem)] leading-[0.98] tracking-[-0.015em] text-zs-text mb-5">
             {t.future.title1}{" "}
             <span className="text-gradient-cyan">{t.future.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed text-left sm:text-center">{t.future.sub}</p>
+          <p className="font-dm text-[clamp(0.96rem,1.7vw,1.12rem)] text-zs-muted/95 leading-relaxed sm:leading-[1.75] text-left sm:text-center">
+            {t.future.sub}
+          </p>
         </div>
 
         {/* Phase cards — 1 col mobile, 3 from lg */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-10">
           {phases.map((phase, i) => (
-            <div key={i} className="glass-card rounded-2xl border border-zs-border p-5 sm:p-6 lg:p-8 relative overflow-hidden">
+            <div key={i} className="glass-card rounded-2xl border border-zs-border p-5 sm:p-6 lg:p-8 relative overflow-hidden hover:-translate-y-0.5 transition-transform duration-300">
               {/* Ghost number */}
               <div className="absolute top-0 right-2 font-syne font-extrabold text-[60px] sm:text-[80px] leading-none text-zs-faint/12 pointer-events-none select-none">
                 {i + 1}
               </div>
               <div className="relative z-10">
                 <div className="flex items-center gap-2.5 mb-4">
-                  <span className="font-mono text-[10px] sm:text-xs text-zs-muted">{phase.phase}</span>
+                  <span className="font-mono text-[11px] sm:text-xs text-zs-muted">{phase.phase}</span>
                   <span className={`tag-badge px-2 py-0.5 rounded border text-[9px] sm:text-[10px] ${statusColors[phase.statusColor]}`}>
                     {phase.status}
                   </span>
                 </div>
-                <h3 className="font-syne font-bold text-base sm:text-lg lg:text-xl text-zs-text mb-4">{phase.title}</h3>
+                <h3 className="font-syne font-bold text-lg sm:text-xl lg:text-2xl text-zs-text mb-4">{phase.title}</h3>
                 <div className="flex flex-col gap-2">
                   {phase.items.map((item, j) => (
                     <div key={j} className="flex items-start gap-2">
                       <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5 ${dotColors[phase.statusColor]}`} />
-                      <span className="font-dm text-xs sm:text-sm text-zs-muted leading-snug">{item}</span>
+                      <span className="font-dm text-sm text-zs-muted/90 leading-snug">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -89,7 +91,7 @@ export default function FutureSection() {
               <span className="text-gradient-cyan">outlasts market cycles</span>{" "}
               and powers the full ZETTA financial stack.&rdquo;
             </p>
-            <div className="font-mono text-[10px] sm:text-xs text-zs-muted tracking-widest uppercase">
+            <div className="font-mono text-[11px] sm:text-xs text-zs-muted tracking-[0.12em] uppercase">
               Z-SWAP Protocol Vision — ZETTA Ecosystem
             </div>
           </div>
