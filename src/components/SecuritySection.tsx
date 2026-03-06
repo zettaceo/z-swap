@@ -59,8 +59,8 @@ export default function SecuritySection() {
                 <div key={i} className="flex gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl glass-card border border-zs-border">
                   <span className="text-lg leading-none flex-shrink-0 mt-0.5">{item.icon}</span>
                   <div className="min-w-0">
-                    <div className="font-syne font-semibold text-xs sm:text-sm text-zs-text mb-1">{item.title}</div>
-                    <div className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-relaxed">{item.desc}</div>
+                    <div className="font-syne font-semibold text-sm sm:text-base text-zs-text mb-1">{item.title}</div>
+                    <div className="font-dm text-[12px] sm:text-sm text-zs-muted/80 leading-relaxed">{item.desc}</div>
                   </div>
                 </div>
               ))}
@@ -72,14 +72,14 @@ export default function SecuritySection() {
             {/* Panel header */}
             <div className="px-4 sm:px-5 py-3.5 border-b border-zs-border bg-zs-bg-3/50 flex items-center justify-between gap-2">
               <div className="min-w-0">
-                <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase">
+                <div className="font-mono text-[11px] text-zs-muted tracking-[0.16em] uppercase">
                   Security Report
                 </div>
-                <div className="font-syne font-semibold text-xs sm:text-sm text-zs-text mt-0.5 truncate">
+                <div className="font-syne font-semibold text-sm sm:text-base text-zs-text mt-0.5 truncate">
                   TOKEN: EXAMPLE/USDC
                 </div>
               </div>
-              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted border border-zs-faint rounded px-2 py-1 flex-shrink-0">
+              <div className="font-mono text-[10px] text-zs-muted border border-zs-faint rounded px-2 py-1 flex-shrink-0 tracking-[0.14em] uppercase">
                 Live Demo
               </div>
             </div>
@@ -92,8 +92,8 @@ export default function SecuritySection() {
                 return (
                   <div key={i} className={isLast ? "pt-3.5 border-t border-zs-border" : ""}>
                     <div className="flex items-center justify-between mb-1.5 gap-2">
-                      <span className="font-mono text-[10px] sm:text-[11px] text-zs-text/80 truncate">{check.label}</span>
-                      <span className={`tag-badge px-2 py-0.5 rounded border text-[9px] sm:text-[10px] flex-shrink-0 ${c.badge}`}>
+                      <span className="font-mono text-[11px] sm:text-[12px] text-zs-text/80 truncate">{check.label}</span>
+                      <span className={`tag-badge px-2 py-0.5 rounded border text-[10px] sm:text-[11px] flex-shrink-0 ${c.badge}`}>
                         {check.status}
                       </span>
                     </div>
@@ -119,7 +119,7 @@ export default function SecuritySection() {
             <div className="px-4 sm:px-5 pb-4 sm:pb-5">
               <div className="p-3 sm:p-4 rounded-xl bg-zs-green/[0.05] border border-zs-green/20 flex gap-2.5 sm:gap-3 items-start">
                 <div className="w-2 h-2 rounded-full bg-zs-green mt-1 flex-shrink-0 pulse-dot" />
-                <p className="font-dm text-[11px] sm:text-xs text-zs-muted/85 leading-relaxed">
+                <p className="font-dm text-[12px] sm:text-sm text-zs-muted/85 leading-relaxed">
                   <span className="text-zs-green font-semibold">Low risk profile detected.</span>{" "}
                   All critical checks passed. Token tax at 2% — review before large swaps.
                 </p>

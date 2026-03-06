@@ -61,15 +61,15 @@ export default function Navigation() {
             </div>
             <div className="leading-none overflow-hidden">
               <div className="font-syne font-bold text-zs-text text-sm tracking-wider truncate">Z-SWAP</div>
-              <div className="font-mono text-[7px] sm:text-[8px] text-zs-muted tracking-[0.18em] uppercase">ZETTA PROTOCOL</div>
+              <div className="font-mono text-[8px] sm:text-[9px] text-zs-muted tracking-[0.16em] uppercase">ZETTA PROTOCOL</div>
             </div>
           </a>
 
-          {/* Desktop links — only xl+ */}
-          <div className="hidden xl:flex items-center gap-5 2xl:gap-7">
+          {/* Desktop links — visible from lg for laptop polish */}
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
             {navLinks.map((link) => (
               <a key={link.href} href={link.href}
-                className="font-mono text-[10px] 2xl:text-[11px] text-zs-muted hover:text-zs-cyan tracking-widest uppercase transition-colors whitespace-nowrap">
+                className="font-mono text-[11px] xl:text-xs text-zs-muted hover:text-zs-cyan tracking-[0.16em] uppercase transition-colors whitespace-nowrap">
                 {link.label}
               </a>
             ))}
@@ -84,7 +84,7 @@ export default function Navigation() {
                 onClick={() => setLangOpen(!langOpen)}
                 aria-label={`Language: ${current.label}. Click to change.`}
                 aria-expanded={langOpen}
-                className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1.5 border border-zs-border rounded-lg font-mono text-[10px] sm:text-[11px] text-zs-muted hover:border-zs-cyan/40 hover:text-zs-cyan transition-all"
+                className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 border border-zs-border rounded-lg font-mono text-[10px] sm:text-[11px] text-zs-muted hover:border-zs-cyan/40 hover:text-zs-cyan transition-all bg-zs-bg/30"
               >
                 <span className="text-sm leading-none">{current.flag}</span>
                 <span className="hidden sm:inline">{current.label}</span>
@@ -111,15 +111,15 @@ export default function Navigation() {
               )}
             </div>
 
-            {/* CTA — sm+ */}
+            {/* CTA — md+ */}
             <a href="#cta"
-              className="hidden sm:flex items-center px-3 md:px-4 py-1.5 bg-zs-cyan/10 border border-zs-cyan/40 rounded-lg font-mono text-[10px] md:text-[11px] text-zs-cyan hover:bg-zs-cyan/20 tracking-widest uppercase transition-all whitespace-nowrap">
+              className="hidden md:flex items-center px-3.5 md:px-4 py-1.5 bg-zs-cyan/10 border border-zs-cyan/40 rounded-lg font-mono text-[10px] md:text-[11px] text-zs-cyan hover:bg-zs-cyan/20 tracking-[0.16em] uppercase transition-all whitespace-nowrap">
               {t.nav.access}
             </a>
 
-            {/* Hamburger — hidden on xl */}
+            {/* Hamburger — hidden on lg */}
             <button
-              className="xl:hidden flex flex-col justify-center gap-[5px] w-8 h-8"
+              className="lg:hidden flex flex-col justify-center gap-[5px] w-8 h-8"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle navigation menu"
               aria-expanded={menuOpen}
@@ -133,17 +133,17 @@ export default function Navigation() {
       </div>
 
       {/* Mobile dropdown — max-h animation prevents layout jump */}
-      <div className={`xl:hidden overflow-hidden transition-[max-height] duration-300 ease-in-out ${menuOpen ? "max-h-96" : "max-h-0"}`}>
-        <div className="border-t border-zs-border nav-blur bg-zs-bg/95 px-4 py-3 flex flex-col gap-0.5">
+      <div className={`lg:hidden overflow-hidden transition-[max-height] duration-300 ease-in-out ${menuOpen ? "max-h-96" : "max-h-0"}`}>
+        <div className="border-t border-zs-border nav-blur bg-zs-bg/95 px-4 py-3.5 flex flex-col gap-1">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="font-mono text-xs text-zs-muted hover:text-zs-cyan tracking-widest uppercase py-3 border-b border-zs-faint/20 transition-colors last:border-b-0">
+              className="font-mono text-[11px] text-zs-muted hover:text-zs-cyan tracking-[0.16em] uppercase py-3 border-b border-zs-faint/20 transition-colors last:border-b-0">
               {link.label}
             </a>
           ))}
           <a href="#cta" onClick={() => setMenuOpen(false)}
-            className="mt-2 py-3 bg-zs-cyan/10 border border-zs-cyan/40 rounded-xl font-mono text-xs text-zs-cyan text-center tracking-widest uppercase">
+            className="mt-2 py-3 bg-zs-cyan/10 border border-zs-cyan/40 rounded-xl font-mono text-[11px] text-zs-cyan text-center tracking-[0.16em] uppercase">
             {t.nav.access}
           </a>
         </div>

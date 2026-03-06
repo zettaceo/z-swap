@@ -32,7 +32,7 @@ export default function LiquiditySection() {
               The Smart Routing{" "}
               <span className="text-gradient-cyan">Engine</span>
             </h2>
-            <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed mb-6 sm:mb-8">
+            <p className="font-dm text-sm sm:text-base lg:text-lg text-zs-muted leading-relaxed mb-6 sm:mb-8 max-w-xl">
               Z-SWAP evaluates all available liquidity paths across internal pools and external aggregations to deliver optimal execution prices with minimum slippage and MEV protection.
             </p>
 
@@ -40,7 +40,7 @@ export default function LiquiditySection() {
               {capabilities.map((cap, i) => (
                 <div key={i} className="flex items-center gap-2 p-2 sm:p-2.5 rounded-lg bg-zs-bg-3/40 border border-zs-faint/30">
                   <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${cap.active ? "bg-zs-cyan" : "bg-zs-faint"}`} />
-                  <span className={`font-mono text-[10px] sm:text-xs leading-snug ${cap.active ? "text-zs-text/85" : "text-zs-muted/60"}`}>
+                  <span className={`font-mono text-[11px] sm:text-[12px] leading-snug ${cap.active ? "text-zs-text/85" : "text-zs-muted/60"}`}>
                     {cap.label}
                   </span>
                 </div>
@@ -51,12 +51,12 @@ export default function LiquiditySection() {
           {/* B1 — Liquidity Flow Animation */}
           <div className="glass-card rounded-2xl p-4 sm:p-6 lg:p-8 border border-zs-border w-full min-w-0">
             <div className="flex items-center justify-between mb-4 gap-2">
-              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase">
+              <div className="font-mono text-[11px] text-zs-muted tracking-[0.16em] uppercase">
                 Liquidity Flow — Live Routing
               </div>
               <div className="flex items-center gap-1.5 flex-shrink-0">
                 <div className="w-1.5 h-1.5 rounded-full bg-zs-cyan pulse-dot" />
-                <span className="font-mono text-[9px] text-zs-cyan/70">ACTIVE</span>
+                <span className="font-mono text-[10px] text-zs-cyan/75 tracking-[0.14em] uppercase">ACTIVE</span>
               </div>
             </div>
 
@@ -71,7 +71,7 @@ export default function LiquiditySection() {
               ].map((s, i) => (
                 <div key={i} className="text-center">
                   <div className={`font-syne font-bold text-xs sm:text-sm ${s.color}`}>{s.value}</div>
-                  <div className="font-mono text-[8px] sm:text-[9px] text-zs-muted mt-0.5">{s.label}</div>
+                  <div className="font-mono text-[10px] sm:text-[11px] text-zs-muted mt-0.5 tracking-[0.1em] uppercase">{s.label}</div>
                 </div>
               ))}
             </div>

@@ -71,7 +71,7 @@ export default function EcosystemSection() {
             {t.ecosystem.title1}{" "}
             <span className="text-gradient-cyan">{t.ecosystem.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed max-w-md">{t.ecosystem.sub}</p>
+          <p className="font-dm text-sm sm:text-base lg:text-lg text-zs-muted leading-relaxed max-w-xl">{t.ecosystem.sub}</p>
         </div>
 
         {/* Integration cards + Network map — stacked on mobile, side-by-side from lg */}
@@ -92,17 +92,17 @@ export default function EcosystemSection() {
                 >
                   <div className="flex items-center gap-2 mb-2.5 min-w-0">
                     <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.dot} ${item.highlight ? "pulse-dot" : ""}`} />
-                    <span className={`font-mono text-[9px] sm:text-[10px] tracking-widest uppercase font-bold truncate ${c.text}`}>
+                    <span className={`font-mono text-[11px] tracking-[0.16em] uppercase font-bold truncate ${c.text}`}>
                       {item.type}
                     </span>
                     {item.highlight && (
-                      <span className="ml-auto font-mono text-[8px] text-zs-green/70 border border-zs-green/30 rounded px-1.5 py-0.5 flex-shrink-0">
+                      <span className="ml-auto font-mono text-[9px] text-zs-green/75 border border-zs-green/30 rounded px-1.5 py-0.5 flex-shrink-0 tracking-[0.14em] uppercase">
                         KEY
                       </span>
                     )}
                   </div>
-                  <div className="font-syne font-semibold text-xs sm:text-sm text-zs-text mb-1.5 truncate">{item.name}</div>
-                  <div className="font-dm text-[11px] sm:text-xs text-zs-muted/85 leading-relaxed">{item.desc}</div>
+                  <div className="font-syne font-semibold text-sm sm:text-base text-zs-text mb-1.5 leading-snug">{item.name}</div>
+                  <div className="font-dm text-[12px] sm:text-sm text-zs-muted/85 leading-relaxed">{item.desc}</div>
                 </div>
               );
             })}
@@ -111,12 +111,12 @@ export default function EcosystemSection() {
           {/* Network map — SVG scales via viewBox, never overflows */}
           <div className="glass-card rounded-2xl border border-zs-border overflow-hidden min-w-0">
             <div className="px-4 sm:px-5 py-3 border-b border-zs-border flex items-center justify-between gap-2">
-              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase truncate">
+              <div className="font-mono text-[11px] text-zs-muted tracking-[0.16em] uppercase truncate">
                 {t.ecosystem.networkMap}
               </div>
               <div className="flex items-center gap-1.5 flex-shrink-0">
                 <div className="w-1.5 h-1.5 rounded-full bg-zs-green pulse-dot" />
-                <span className="font-mono text-[9px] text-zs-green/70">LIVE</span>
+                <span className="font-mono text-[10px] text-zs-green/75 tracking-[0.14em] uppercase">LIVE</span>
               </div>
             </div>
 
@@ -132,16 +132,16 @@ export default function EcosystemSection() {
                   <div key={n.id} className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl border"
                     style={{ borderColor: `${pts[n.id]?.color ?? '#1A1A35'}30`, background: `${pts[n.id]?.color ?? '#1A1A35'}08` }}>
                     <div className="w-2 h-2 rounded-full" style={{ background: pts[n.id]?.color ?? '#1A1A35' }} />
-                    <span className="font-mono text-[9px] font-bold text-center leading-tight" style={{ color: pts[n.id]?.color ?? '#E2E2F0' }}>
+                    <span className="font-mono text-[10px] font-bold text-center leading-tight" style={{ color: pts[n.id]?.color ?? '#E2E2F0' }}>
                       {n.label}
                     </span>
-                    <span className="font-mono text-[8px] text-zs-muted text-center leading-tight">{n.sub}</span>
+                    <span className="font-mono text-[9px] text-zs-muted text-center leading-tight">{n.sub}</span>
                   </div>
                 ))}
               </div>
               <div className="mt-2 pt-2 border-t border-zs-faint/20 flex items-center justify-center gap-1.5">
                 <div className="w-1.5 h-1.5 rounded-full bg-zs-cyan pulse-dot" />
-                <span className="font-mono text-[8px] text-zs-muted">Z-SWAP acts as central liquidity hub</span>
+                <span className="font-mono text-[9px] text-zs-muted tracking-[0.1em]">Z-SWAP acts as central liquidity hub</span>
               </div>
             </div>
 

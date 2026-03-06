@@ -30,11 +30,11 @@ export default function CTASection() {
         {/* CTAs — stacked on 320px, row from sm */}
         <div className="flex flex-col gap-3 w-full max-w-xs mx-auto sm:flex-row sm:max-w-none sm:w-auto sm:justify-center sm:mx-0 mb-8 sm:mb-12">
           <a href="#"
-            className="px-8 sm:px-10 py-3.5 sm:py-4 bg-zs-cyan text-zs-bg font-syne font-bold text-xs sm:text-sm tracking-widest uppercase rounded-xl hover:bg-zs-cyan-dim transition-colors duration-200 text-center whitespace-nowrap">
+            className="px-8 sm:px-10 py-3.5 sm:py-4 bg-zs-cyan text-zs-bg font-syne font-bold text-xs sm:text-sm tracking-[0.16em] uppercase rounded-xl hover:bg-zs-cyan-dim transition-colors duration-200 text-center whitespace-nowrap">
             {t.cta.btn1}
           </a>
           <a href="#"
-            className="px-8 sm:px-10 py-3.5 sm:py-4 border border-zs-border text-zs-text font-syne font-semibold text-xs sm:text-sm tracking-widest uppercase rounded-xl hover:border-zs-cyan/30 hover:text-zs-cyan transition-all duration-200 text-center whitespace-nowrap">
+            className="px-8 sm:px-10 py-3.5 sm:py-4 border border-zs-border text-zs-text font-syne font-semibold text-xs sm:text-sm tracking-[0.16em] uppercase rounded-xl hover:border-zs-cyan/30 hover:text-zs-cyan transition-all duration-200 text-center whitespace-nowrap">
             {t.cta.btn2}
           </a>
         </div>
@@ -47,7 +47,7 @@ export default function CTASection() {
             { label: t.cta.eco,    value: t.cta.ecoVal,    color: "gold"   as const },
           ]).map((item, i) => (
             <div key={i} className="glass-card border border-zs-border rounded-xl p-4 sm:p-5 text-center">
-              <div className={`font-mono text-[9px] sm:text-[10px] tracking-widest uppercase mb-2 font-bold ${
+              <div className={`font-mono text-[11px] tracking-[0.16em] uppercase mb-2 font-bold ${
                 item.color === "cyan" ? "text-zs-cyan" : item.color === "violet" ? "text-zs-violet-bright" : "text-zs-gold"
               }`}>{item.label}</div>
               <div className="font-syne font-semibold text-xs sm:text-sm text-zs-text">{item.value}</div>

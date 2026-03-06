@@ -13,6 +13,8 @@ export interface Translation {
     badge: string; line1: string; line2: string; line3: string; sub: string;
     cta1: string; cta2: string;
     stat1: string; stat2: string; stat3: string; stat4: string;
+    panelLabel: string; panelTitle: string; panelCopy: string;
+    feature1: string; feature2: string; feature3: string;
   };
   whatIs: {
     label: string; title1: string; title2: string; sub: string;
@@ -65,6 +67,12 @@ const translations: Record<Lang, Translation> = {
       cta1: "Explore Protocol", cta2: "View Architecture",
       stat1: "Protocol Functions", stat2: "Core System Layers",
       stat3: "Chain Architecture", stat4: "Regulatory Alignment",
+      panelLabel: "Institutional Liquidity Layer",
+      panelTitle: "Built to look, read and perform like a serious financial system.",
+      panelCopy: "A denser, editorial first screen with clearer hierarchy, controlled line lengths and a calmer signal-to-noise ratio across every viewport.",
+      feature1: "Multi-chain intelligent routing",
+      feature2: "Advisory-only AI intelligence",
+      feature3: "VARA / VASP-aligned posture",
     },
     whatIs: {
       label: "01 — Protocol Definition",
@@ -138,6 +146,12 @@ const translations: Record<Lang, Translation> = {
       cta1: "Explorar Protocolo", cta2: "Ver Arquitetura",
       stat1: "Funções do Protocolo", stat2: "Camadas do Sistema",
       stat3: "Arquitetura Multicadeia", stat4: "Alinhamento Regulatório",
+      panelLabel: "Camada Institucional de Liquidez",
+      panelTitle: "Desenhado para parecer, ler e performar como infraestrutura financeira séria.",
+      panelCopy: "Primeira dobra mais densa e editorial, com hierarquia clara, largura de texto controlada e melhor relação entre sinal e ruído em qualquer viewport.",
+      feature1: "Roteamento inteligente multicadeia",
+      feature2: "IA consultiva, nunca executora",
+      feature3: "Postura alinhada a VARA / VASP",
     },
     whatIs: {
       label: "01 — Definição do Protocolo",
@@ -211,6 +225,12 @@ const translations: Record<Lang, Translation> = {
       cta1: "Explorar Protocolo", cta2: "Ver Arquitectura",
       stat1: "Funciones del Protocolo", stat2: "Capas del Sistema",
       stat3: "Arquitectura Multicadena", stat4: "Alineación Regulatoria",
+      panelLabel: "Capa Institucional de Liquidez",
+      panelTitle: "Diseñado para verse, leerse y operar como infraestructura financiera seria.",
+      panelCopy: "Primer pliegue más denso y editorial, con jerarquía clara, ancho de texto controlado y una mejor relación señal/ruido en cualquier viewport.",
+      feature1: "Enrutamiento inteligente multicadena",
+      feature2: "IA consultiva, nunca ejecutora",
+      feature3: "Postura alineada con VARA / VASP",
     },
     whatIs: {
       label: "01 — Definición del Protocolo",
@@ -284,6 +304,12 @@ const translations: Record<Lang, Translation> = {
       cta1: "探索协议", cta2: "查看架构",
       stat1: "协议功能", stat2: "核心系统层",
       stat3: "多链架构", stat4: "监管对齐",
+      panelLabel: "机构级流动性层",
+      panelTitle: "以严肃金融基础设施的标准来呈现、阅读与运行。",
+      panelCopy: "首屏更紧凑、更具编辑感，拥有更清晰的层级、受控的文本宽度，以及在所有视口下更好的信噪比。",
+      feature1: "多链智能路由",
+      feature2: "仅提供建议的 AI 智能",
+      feature3: "对齐 VARA / VASP 框架",
     },
     whatIs: {
       label: "01 — 协议定义",

@@ -70,7 +70,7 @@ export default function AILayerSection() {
             {t.ai.title1}{" "}
             <span className="text-gradient-gold">{t.ai.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed max-w-md">{t.ai.sub}</p>
+          <p className="font-dm text-sm sm:text-base lg:text-lg text-zs-muted leading-relaxed max-w-xl">{t.ai.sub}</p>
         </div>
 
         {/* Two-column layout */}
@@ -82,12 +82,12 @@ export default function AILayerSection() {
               <div className="w-2.5 h-2.5 rounded-full bg-zs-red/60" aria-hidden="true" />
               <div className="w-2.5 h-2.5 rounded-full bg-zs-gold/60" aria-hidden="true" />
               <div className="w-2.5 h-2.5 rounded-full bg-zs-green/60" aria-hidden="true" />
-              <span className="ml-2 font-mono text-[9px] sm:text-[10px] text-zs-muted truncate">
+              <span className="ml-2 font-mono text-[11px] text-zs-muted truncate tracking-[0.14em] uppercase">
                 ZION AI — Analysis Terminal
               </span>
             </div>
             <div
-              className="p-4 sm:p-5 font-mono text-[10px] sm:text-[11px] leading-[1.65] h-64 sm:h-80 lg:h-96 overflow-y-auto"
+              className="p-4 sm:p-5 font-mono text-[11px] sm:text-[12px] leading-[1.75] h-64 sm:h-80 lg:h-96 overflow-y-auto"
               role="log"
               aria-label="ZION AI terminal output"
               aria-live="polite"
@@ -112,10 +112,10 @@ export default function AILayerSection() {
                     </span>
                   </div>
                   <div className="min-w-0">
-                    <h4 className="font-syne font-semibold text-xs sm:text-sm text-zs-text mb-1 group-hover:text-zs-gold transition-colors">
+                    <h4 className="font-syne font-semibold text-sm sm:text-base text-zs-text mb-1 group-hover:text-zs-gold transition-colors">
                       {cap.title}
                     </h4>
-                    <p className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-relaxed">{cap.desc}</p>
+                    <p className="font-dm text-[12px] sm:text-sm text-zs-muted/80 leading-relaxed">{cap.desc}</p>
                   </div>
                 </div>
               </div>
@@ -123,10 +123,10 @@ export default function AILayerSection() {
 
             {/* Advisory disclaimer */}
             <div className="p-3.5 sm:p-4 rounded-xl border border-zs-gold/20 bg-zs-gold/[0.04]">
-              <div className="font-mono text-[9px] sm:text-[10px] text-zs-gold tracking-widest uppercase mb-1.5">
+              <div className="font-mono text-[11px] text-zs-gold tracking-[0.16em] uppercase mb-1.5">
                 {t.ai.advisory}
               </div>
-              <p className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-relaxed">
+              <p className="font-dm text-[12px] sm:text-sm text-zs-muted/80 leading-relaxed">
                 {t.ai.advisoryText}
               </p>
             </div>

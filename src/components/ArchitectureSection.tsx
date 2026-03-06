@@ -62,7 +62,7 @@ export default function ArchitectureSection() {
             {t.architecture.title1}{" "}
             <span className="text-gradient-cyan">{t.architecture.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed text-left sm:text-center">{t.architecture.sub}</p>
+          <p className="font-dm text-sm sm:text-base lg:text-lg text-zs-muted leading-relaxed text-left sm:text-center">{t.architecture.sub}</p>
         </div>
 
         {/*
@@ -73,7 +73,7 @@ export default function ArchitectureSection() {
          */}
         <div className="md:hidden glass-card rounded-2xl border border-zs-border overflow-hidden mb-6">
           <div className="p-3 border-b border-zs-border">
-            <span className="font-mono text-[9px] text-zs-muted tracking-widest uppercase">Protocol Stack — 5 Layers</span>
+            <span className="font-mono text-[11px] text-zs-muted tracking-[0.16em] uppercase">Protocol Stack — 5 Layers</span>
           </div>
           <div className="divide-y divide-zs-faint/20">
             {archLayers.map((layer, li) => (
@@ -82,9 +82,9 @@ export default function ArchitectureSection() {
                 <div className="flex items-center gap-2 mb-2.5">
                   <div className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0"
                     style={{ background: `${layer.color}0.12)`, border: `1px solid ${layer.color}0.3)` }}>
-                    <span className="font-mono text-[8px]" style={{ color: `${layer.color}0.9)` }}>{String(li+1).padStart(2,"0")}</span>
+                    <span className="font-mono text-[9px]" style={{ color: `${layer.color}0.9)` }}>{String(li+1).padStart(2,"0")}</span>
                   </div>
-                  <span className="font-mono text-[9px] tracking-widest uppercase" style={{ color: `${layer.color}0.7)` }}>
+                  <span className="font-mono text-[11px] tracking-[0.14em] uppercase" style={{ color: `${layer.color}0.7)` }}>
                     {layer.label}
                   </span>
                 </div>
@@ -192,10 +192,10 @@ export default function ArchitectureSection() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 mb-6 sm:mb-8">
           {layerCards.map((item, i) => (
             <div key={i} className="glass-card p-3 sm:p-4 rounded-xl border border-zs-border text-center">
-              <div className={`font-mono text-[10px] sm:text-xs tracking-widest uppercase mb-1.5 font-bold ${colorClass[item.color]}`}>
+              <div className={`font-mono text-[11px] sm:text-xs tracking-[0.16em] uppercase mb-1.5 font-bold ${colorClass[item.color]}`}>
                 {item.layer}
               </div>
-              <div className="font-dm text-[10px] sm:text-xs text-zs-text/70 leading-snug">{item.desc}</div>
+              <div className="font-dm text-[12px] sm:text-sm text-zs-text/70 leading-snug">{item.desc}</div>
             </div>
           ))}
         </div>
@@ -204,12 +204,12 @@ export default function ArchitectureSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
           <div className="glass-card rounded-2xl border border-zs-border p-4 sm:p-6 min-w-0">
             <div className="flex items-center justify-between mb-4 gap-2">
-              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase">
+              <div className="font-mono text-[11px] text-zs-muted tracking-[0.16em] uppercase">
                 Multi-Chain Routing — Live
               </div>
               <div className="flex items-center gap-1.5 flex-shrink-0">
                 <div className="w-1.5 h-1.5 rounded-full bg-zs-green pulse-dot" />
-                <span className="font-mono text-[9px] text-zs-green/70">ROUTING</span>
+                <span className="font-mono text-[10px] text-zs-green/75 tracking-[0.14em] uppercase">ROUTING</span>
               </div>
             </div>
             <MultiChainRouting />
@@ -232,8 +232,8 @@ export default function ArchitectureSection() {
               <div key={i} className="flex gap-3 p-3 rounded-xl bg-zs-bg-3/50 border border-zs-faint/30">
                 <div className="w-1.5 h-1.5 rounded-full bg-zs-cyan flex-shrink-0 mt-1.5" />
                 <div>
-                  <div className="font-syne font-semibold text-xs sm:text-sm text-zs-text mb-0.5">{item.label}</div>
-                  <div className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-relaxed">{item.desc}</div>
+                  <div className="font-syne font-semibold text-sm sm:text-base text-zs-text mb-0.5">{item.label}</div>
+                  <div className="font-dm text-[12px] sm:text-sm text-zs-muted/80 leading-relaxed">{item.desc}</div>
                 </div>
               </div>
             ))}
