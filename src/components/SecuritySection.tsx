@@ -35,32 +35,31 @@ export default function SecuritySection() {
   const { t } = useLang();
 
   return (
-    <section id="security" className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+    <section id="security" className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-x-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="section-label mb-3">{t.security.label}</div>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="section-label mb-4">{t.security.label}</div>
 
-        {/* Stacked mobile → side-by-side from lg */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
           {/* Left: heading + feature list */}
           <div>
-            <h2 className="font-syne font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-zs-text mb-4 sm:mb-5">
+            <h2 className="font-syne font-bold text-[clamp(1.5rem,4vw,3.25rem)] leading-[1.1] tracking-tight text-zs-text mb-4 sm:mb-5">
               {t.security.title1}{" "}
               <span className="text-zs-red">{t.security.title2}</span>
             </h2>
-            <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed mb-6 sm:mb-8">
+            <p className="font-dm text-sm sm:text-base text-zs-muted leading-[1.7] mb-8 sm:mb-10">
               {t.security.sub}
             </p>
 
-            <div className="flex flex-col gap-2.5 sm:gap-3">
+            <div className="flex flex-col gap-3">
               {features.map((item, i) => (
-                <div key={i} className="flex gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl glass-card border border-zs-border">
+                <div key={i} className="flex gap-3 sm:gap-4 p-4 rounded-xl glass-card border border-zs-border">
                   <span className="text-lg leading-none flex-shrink-0 mt-0.5">{item.icon}</span>
                   <div className="min-w-0">
                     <div className="font-syne font-semibold text-xs sm:text-sm text-zs-text mb-1">{item.title}</div>
-                    <div className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-relaxed">{item.desc}</div>
+                    <div className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-[1.7]">{item.desc}</div>
                   </div>
                 </div>
               ))}
@@ -69,10 +68,9 @@ export default function SecuritySection() {
 
           {/* Right: live risk report panel */}
           <div className="glass-card rounded-2xl border border-zs-border overflow-hidden min-w-0">
-            {/* Panel header */}
             <div className="px-4 sm:px-5 py-3.5 border-b border-zs-border bg-zs-bg-3/50 flex items-center justify-between gap-2">
               <div className="min-w-0">
-                <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase">
+                <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-[0.15em] uppercase">
                   Security Report
                 </div>
                 <div className="font-syne font-semibold text-xs sm:text-sm text-zs-text mt-0.5 truncate">
@@ -84,7 +82,6 @@ export default function SecuritySection() {
               </div>
             </div>
 
-            {/* Checks */}
             <div className="p-4 sm:p-5 flex flex-col gap-3.5 sm:gap-4">
               {checks.map((check, i) => {
                 const c = colorMap[check.color];
@@ -115,11 +112,10 @@ export default function SecuritySection() {
               })}
             </div>
 
-            {/* Summary */}
             <div className="px-4 sm:px-5 pb-4 sm:pb-5">
               <div className="p-3 sm:p-4 rounded-xl bg-zs-green/[0.05] border border-zs-green/20 flex gap-2.5 sm:gap-3 items-start">
                 <div className="w-2 h-2 rounded-full bg-zs-green mt-1 flex-shrink-0 pulse-dot" />
-                <p className="font-dm text-[11px] sm:text-xs text-zs-muted/85 leading-relaxed">
+                <p className="font-dm text-[11px] sm:text-xs text-zs-muted/85 leading-[1.7]">
                   <span className="text-zs-green font-semibold">Low risk profile detected.</span>{" "}
                   All critical checks passed. Token tax at 2% — review before large swaps.
                 </p>

@@ -19,26 +19,26 @@ const capabilities = [
 
 export default function LiquiditySection() {
   return (
-    <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+    <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-x-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zs-violet/[0.03] to-transparent pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Text + capability chips */}
           <div>
-            <div className="section-label mb-3">02 — Liquidity Layer</div>
-            <h2 className="font-syne font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-zs-text mb-4">
+            <div className="section-label mb-4">02 — Liquidity Layer</div>
+            <h2 className="font-syne font-bold text-[clamp(1.5rem,4vw,3.25rem)] leading-[1.1] tracking-tight text-zs-text mb-4 sm:mb-5">
               The Smart Routing{" "}
               <span className="text-gradient-cyan">Engine</span>
             </h2>
-            <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed mb-6 sm:mb-8">
+            <p className="font-dm text-sm sm:text-base text-zs-muted leading-[1.7] mb-8 sm:mb-10">
               Z-SWAP evaluates all available liquidity paths across internal pools and external aggregations to deliver optimal execution prices with minimum slippage and MEV protection.
             </p>
 
             <div className="grid grid-cols-1 xs:grid-cols-2 gap-1.5 sm:gap-2">
               {capabilities.map((cap, i) => (
-                <div key={i} className="flex items-center gap-2 p-2 sm:p-2.5 rounded-lg bg-zs-bg-3/40 border border-zs-faint/30">
+                <div key={i} className="flex items-center gap-2.5 p-2.5 sm:p-3 rounded-lg bg-zs-bg-3/40 border border-zs-faint/30">
                   <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${cap.active ? "bg-zs-cyan" : "bg-zs-faint"}`} />
                   <span className={`font-mono text-[10px] sm:text-xs leading-snug ${cap.active ? "text-zs-text/85" : "text-zs-muted/60"}`}>
                     {cap.label}
@@ -48,10 +48,10 @@ export default function LiquiditySection() {
             </div>
           </div>
 
-          {/* B1 — Liquidity Flow Animation */}
+          {/* Liquidity Flow Animation */}
           <div className="glass-card rounded-2xl p-4 sm:p-6 lg:p-8 border border-zs-border w-full min-w-0">
-            <div className="flex items-center justify-between mb-4 gap-2">
-              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase">
+            <div className="flex items-center justify-between mb-5 gap-2">
+              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-[0.15em] uppercase">
                 Liquidity Flow — Live Routing
               </div>
               <div className="flex items-center gap-1.5 flex-shrink-0">
@@ -63,14 +63,14 @@ export default function LiquiditySection() {
             <LiquidityFlowAnimation />
 
             {/* Execution stats row */}
-            <div className="mt-4 pt-4 border-t border-zs-border grid grid-cols-3 gap-2">
+            <div className="mt-5 pt-4 border-t border-zs-border grid grid-cols-3 gap-2">
               {[
                 { label: "Avg Slippage", value: "0.04%",  color: "text-zs-green" },
                 { label: "Routes",       value: "14",      color: "text-zs-cyan"  },
                 { label: "MEV Shield",   value: "Active",  color: "text-zs-gold"  },
               ].map((s, i) => (
                 <div key={i} className="text-center">
-                  <div className={`font-syne font-bold text-xs sm:text-sm ${s.color}`}>{s.value}</div>
+                  <div className={`font-syne font-bold text-sm sm:text-base ${s.color}`}>{s.value}</div>
                   <div className="font-mono text-[8px] sm:text-[9px] text-zs-muted mt-0.5">{s.label}</div>
                 </div>
               ))}

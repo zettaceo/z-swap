@@ -37,25 +37,24 @@ export default function FutureSection() {
   ];
 
   return (
-    <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+    <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-x-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="section-label mb-3">{t.future.label}</div>
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-zs-text mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div className="section-label mb-4">{t.future.label}</div>
+          <h2 className="font-syne font-bold text-[clamp(1.5rem,4vw,3.25rem)] leading-[1.1] tracking-tight text-zs-text mb-4 sm:mb-5">
             {t.future.title1}{" "}
             <span className="text-gradient-cyan">{t.future.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed text-left sm:text-center">{t.future.sub}</p>
+          <p className="font-dm text-sm sm:text-base text-zs-muted leading-[1.7] text-center">{t.future.sub}</p>
         </div>
 
-        {/* Phase cards — 1 col mobile, 3 from lg */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-10">
+        {/* Phase cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
           {phases.map((phase, i) => (
             <div key={i} className="glass-card rounded-2xl border border-zs-border p-5 sm:p-6 lg:p-8 relative overflow-hidden">
-              {/* Ghost number */}
               <div className="absolute top-0 right-2 font-syne font-extrabold text-[60px] sm:text-[80px] leading-none text-zs-faint/12 pointer-events-none select-none">
                 {i + 1}
               </div>
@@ -67,7 +66,7 @@ export default function FutureSection() {
                   </span>
                 </div>
                 <h3 className="font-syne font-bold text-base sm:text-lg lg:text-xl text-zs-text mb-4">{phase.title}</h3>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2.5">
                   {phase.items.map((item, j) => (
                     <div key={j} className="flex items-start gap-2">
                       <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5 ${dotColors[phase.statusColor]}`} />
@@ -84,12 +83,12 @@ export default function FutureSection() {
         <div className="relative p-6 sm:p-8 lg:p-10 rounded-2xl overflow-hidden border border-zs-border text-center">
           <div className="absolute inset-0 bg-gradient-to-r from-zs-cyan/[0.04] via-transparent to-zs-violet/[0.04]" />
           <div className="relative z-10 max-w-3xl mx-auto">
-            <p className="font-syne font-bold text-lg sm:text-xl lg:text-2xl xl:text-3xl text-zs-text mb-4 leading-tight">
+            <p className="font-syne font-bold text-lg sm:text-xl lg:text-2xl xl:text-3xl text-zs-text mb-4 leading-[1.15] tracking-tight">
               &ldquo;A protocol-level liquidity layer that{" "}
               <span className="text-gradient-cyan">outlasts market cycles</span>{" "}
               and powers the full ZETTA financial stack.&rdquo;
             </p>
-            <div className="font-mono text-[10px] sm:text-xs text-zs-muted tracking-widest uppercase">
+            <div className="font-mono text-[10px] sm:text-xs text-zs-muted tracking-[0.15em] uppercase">
               Z-SWAP Protocol Vision — ZETTA Ecosystem
             </div>
           </div>

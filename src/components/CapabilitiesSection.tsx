@@ -42,24 +42,24 @@ export default function CapabilitiesSection() {
   const c = colorMap[layer.tagColor];
 
   return (
-    <section id="capabilities" className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+    <section id="capabilities" className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-x-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="section-label mb-3">{t.capabilities.label}</div>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-2 mb-6 sm:mb-10">
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-zs-text">
+        <div className="section-label mb-4">{t.capabilities.label}</div>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3 mb-8 sm:mb-12">
+          <h2 className="font-syne font-bold text-[clamp(1.5rem,4vw,3.25rem)] leading-[1.1] tracking-tight text-zs-text">
             {t.capabilities.title1}{" "}
             <span className="text-gradient-cyan">{t.capabilities.title2}</span>
           </h2>
-          <p className="font-dm text-xs sm:text-sm text-zs-muted max-w-sm leading-relaxed">{t.capabilities.sub}</p>
+          <p className="font-dm text-xs sm:text-sm text-zs-muted max-w-sm leading-[1.7]">{t.capabilities.sub}</p>
         </div>
 
         <div className="flex flex-col lg:grid lg:grid-cols-[200px_1fr] xl:grid-cols-[220px_1fr] gap-4 sm:gap-6">
 
-          {/* Tab list — horizontal scroll on mobile, vertical on lg+ */}
-          <div className="flex flex-row lg:flex-col gap-1.5 overflow-x-auto pb-1 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 scrollbar-none">
+          {/* Tab list */}
+          <div className="flex flex-row lg:flex-col gap-1.5 overflow-x-auto pb-1 lg:pb-0 -mx-5 px-5 lg:mx-0 lg:px-0 scrollbar-none">
             {layers.map((l) => {
               const lc = colorMap[l.tagColor];
               const isActive = active === l.id;
@@ -75,7 +75,7 @@ export default function CapabilitiesSection() {
                       : "border-transparent text-zs-muted hover:text-zs-text hover:bg-zs-faint/20"
                   }`}
                 >
-                  <div className={`font-mono text-[9px] tracking-widest uppercase mb-0.5 ${isActive ? lc.text : "text-zs-faint"}`}>
+                  <div className={`font-mono text-[9px] tracking-[0.15em] uppercase mb-0.5 ${isActive ? lc.text : "text-zs-faint"}`}>
                     {l.tag}
                   </div>
                   <div className="font-syne font-semibold text-xs sm:text-sm whitespace-nowrap">{l.title}</div>
@@ -89,9 +89,9 @@ export default function CapabilitiesSection() {
 
           {/* Active layer panel */}
           <div className={`glass-card rounded-2xl border ${c.active} p-4 sm:p-6 lg:p-8 min-w-0`}>
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4 sm:mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5 sm:mb-6">
               <div>
-                <span className={`inline-block font-mono text-[10px] px-2.5 py-1 rounded-full border ${c.bg} ${c.border} ${c.text} mb-2 tracking-widest uppercase`}>
+                <span className={`inline-block font-mono text-[10px] px-2.5 py-1 rounded-full border ${c.bg} ${c.border} ${c.text} mb-2 tracking-[0.15em] uppercase`}>
                   {layer.tag}
                 </span>
                 <h3 className="font-syne font-bold text-lg sm:text-xl lg:text-2xl text-zs-text">{layer.title}</h3>
@@ -101,12 +101,11 @@ export default function CapabilitiesSection() {
               </div>
             </div>
 
-            <p className="font-dm text-xs sm:text-sm text-zs-muted leading-relaxed mb-4 sm:mb-6">{layer.desc}</p>
+            <p className="font-dm text-xs sm:text-sm text-zs-muted leading-[1.7] mb-5 sm:mb-6">{layer.desc}</p>
 
-            {/* Feature chips — 1 col on mobile, 2 from sm */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
               {layer.features.map((feat, i) => (
-                <div key={i} className="flex items-center gap-2 p-2.5 sm:p-3 rounded-lg bg-zs-bg-3/60 border border-zs-faint/40 hover:border-zs-faint/70 transition-colors">
+                <div key={i} className="flex items-center gap-2.5 p-2.5 sm:p-3 rounded-lg bg-zs-bg-3/60 border border-zs-faint/40 hover:border-zs-faint/70 transition-colors">
                   <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.dot}`} />
                   <span className="font-dm text-[11px] sm:text-xs text-zs-text/85 leading-snug">{feat}</span>
                 </div>

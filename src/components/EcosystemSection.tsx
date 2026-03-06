@@ -52,7 +52,6 @@ const edges: [string, string][] = [
 export default function EcosystemSection() {
   const { t } = useLang();
 
-  // Precompute node positions from percentage coordinates
   const W = 500, H = 400;
   const pts: Record<string, { x:number; y:number; r:number; color:string; label:string; sub:string; primary:boolean; highlight:boolean }> = {};
   nodes.forEach((n) => {
@@ -60,24 +59,23 @@ export default function EcosystemSection() {
   });
 
   return (
-    <section id="ecosystem" className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+    <section id="ecosystem" className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-x-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-zs-border to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="section-label mb-3">{t.ecosystem.label}</div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-3 mb-8 sm:mb-12">
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-zs-text">
+        <div className="section-label mb-4">{t.ecosystem.label}</div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-3 mb-10 sm:mb-14">
+          <h2 className="font-syne font-bold text-[clamp(1.5rem,4vw,3.25rem)] leading-[1.1] tracking-tight text-zs-text">
             {t.ecosystem.title1}{" "}
             <span className="text-gradient-cyan">{t.ecosystem.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed max-w-md">{t.ecosystem.sub}</p>
+          <p className="font-dm text-sm sm:text-base text-zs-muted leading-[1.7] max-w-md">{t.ecosystem.sub}</p>
         </div>
 
-        {/* Integration cards + Network map — stacked on mobile, side-by-side from lg */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start">
 
-          {/* Integration cards — 1 col mobile, 2 col from sm */}
+          {/* Integration cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {integrations.map((item, i) => {
               const c = colorMap[item.color];
@@ -92,7 +90,7 @@ export default function EcosystemSection() {
                 >
                   <div className="flex items-center gap-2 mb-2.5 min-w-0">
                     <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.dot} ${item.highlight ? "pulse-dot" : ""}`} />
-                    <span className={`font-mono text-[9px] sm:text-[10px] tracking-widest uppercase font-bold truncate ${c.text}`}>
+                    <span className={`font-mono text-[9px] sm:text-[10px] tracking-[0.15em] uppercase font-bold truncate ${c.text}`}>
                       {item.type}
                     </span>
                     {item.highlight && (
@@ -102,16 +100,16 @@ export default function EcosystemSection() {
                     )}
                   </div>
                   <div className="font-syne font-semibold text-xs sm:text-sm text-zs-text mb-1.5 truncate">{item.name}</div>
-                  <div className="font-dm text-[11px] sm:text-xs text-zs-muted/85 leading-relaxed">{item.desc}</div>
+                  <div className="font-dm text-[11px] sm:text-xs text-zs-muted/85 leading-[1.7]">{item.desc}</div>
                 </div>
               );
             })}
           </div>
 
-          {/* Network map — SVG scales via viewBox, never overflows */}
+          {/* Network map */}
           <div className="glass-card rounded-2xl border border-zs-border overflow-hidden min-w-0">
             <div className="px-4 sm:px-5 py-3 border-b border-zs-border flex items-center justify-between gap-2">
-              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase truncate">
+              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-[0.15em] uppercase truncate">
                 {t.ecosystem.networkMap}
               </div>
               <div className="flex items-center gap-1.5 flex-shrink-0">
@@ -120,12 +118,7 @@ export default function EcosystemSection() {
               </div>
             </div>
 
-            {/*
-             * ─── MOBILE: compact node list ─────────────────────────────────
-             * At 320–430px the SVG node labels render at 4–5px — illegible.
-             * We show a clean node list instead that communicates the same info.
-             * Hidden on sm+ where the SVG is fully readable.
-             */}
+            {/* MOBILE: compact node list */}
             <div className="sm:hidden p-3 bg-zs-bg-2">
               <div className="grid grid-cols-3 gap-2">
                 {nodes.filter(n => n.id !== 'zfin2').map((n) => (
@@ -145,7 +138,7 @@ export default function EcosystemSection() {
               </div>
             </div>
 
-            {/* Desktop SVG — fully readable at sm+ (≥640px) */}
+            {/* Desktop SVG */}
             <div className="hidden sm:block p-3 sm:p-4 bg-zs-bg-2">
               <svg viewBox={`0 0 ${W} ${H}`} className="w-full" fill="none" aria-hidden="true">
                 <defs>
@@ -163,7 +156,6 @@ export default function EcosystemSection() {
                   </filter>
                 </defs>
 
-                {/* Grid lines */}
                 {[0,50,100,150,200,250,300,350,400].map((y) => (
                   <line key={`h${y}`} x1="0" y1={y} x2={W} y2={y} stroke="rgba(0,232,255,0.02)" strokeWidth="1"/>
                 ))}
@@ -171,11 +163,9 @@ export default function EcosystemSection() {
                   <line key={`v${x}`} x1={x} y1="0" x2={x} y2={H} stroke="rgba(0,232,255,0.02)" strokeWidth="1"/>
                 ))}
 
-                {/* Ambient glows */}
                 <ellipse cx="250" cy="200" rx="120" ry="100" fill="url(#eco-cg)" />
                 <ellipse cx="430" cy="200" rx="60" ry="60" fill="url(#eco-pg)" />
 
-                {/* Edges with animated dots */}
                 {edges.map(([from, to], i) => {
                   const a = pts[from];
                   const b = pts[to];
@@ -199,7 +189,6 @@ export default function EcosystemSection() {
                   );
                 })}
 
-                {/* Nodes */}
                 {Object.entries(pts).map(([id, n]) => (
                   <g key={id}>
                     {n.primary && (
@@ -244,7 +233,7 @@ export default function EcosystemSection() {
             {/* Z-PAY callout */}
             <div className="px-4 sm:px-5 py-3 border-t border-zs-border bg-zs-green/[0.03] flex items-start gap-2.5">
               <div className="w-1.5 h-1.5 rounded-full bg-zs-green mt-1 flex-shrink-0 pulse-dot" />
-              <p className="font-dm text-[10px] sm:text-xs text-zs-muted leading-relaxed">
+              <p className="font-dm text-[10px] sm:text-xs text-zs-muted leading-[1.7]">
                 <span className="text-zs-green font-semibold">Z-PAY integration: </span>
                 All Z-PAY fiat↔crypto conversions route through Z-SWAP&apos;s liquidity engine — the settlement backbone of ZETTA payments.
               </p>

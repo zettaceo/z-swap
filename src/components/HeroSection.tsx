@@ -84,59 +84,51 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative flex flex-col min-h-screen min-h-dvh overflow-x-hidden grid-bg">
+    <section className="hero-section relative flex flex-col overflow-x-hidden grid-bg">
       <canvas ref={canvasRef} className="particle-canvas absolute inset-0 w-full h-full opacity-55 pointer-events-auto" aria-hidden="true" />
-      <div className="absolute top-1/3 left-1/4 w-64 sm:w-96 lg:w-[520px] h-64 sm:h-96 lg:h-[520px] rounded-full bg-zs-violet/10 blur-[100px] lg:blur-[130px] animate-pulse-slow pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 rounded-full bg-zs-cyan/[0.06] blur-[80px] lg:blur-[100px] animate-pulse-slow pointer-events-none" style={{ animationDelay: "2s" }} />
 
-      {/*
-       * ─── LAYOUT FIX ──────────────────────────────────────────────────────
-       * ROOT CAUSE of dead space: `flex-1` with no `justify-center` = content
-       * anchored to top with huge empty area below it.
-       *
-       * FIX: add `justify-center` so content is vertically centered in the
-       * flex-1 area. Use `pt-14` (56px = nav height) as minimum top clearance
-       * so content never slides behind the fixed nav bar.
-       * ─────────────────────────────────────────────────────────────────────
-       */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 sm:px-8 lg:px-12 pt-14 pb-6">
+      {/* Ambient glows */}
+      <div className="absolute top-[20%] left-[15%] w-48 sm:w-72 lg:w-[420px] h-48 sm:h-72 lg:h-[420px] rounded-full bg-zs-violet/[0.08] blur-[80px] lg:blur-[120px] animate-pulse-slow pointer-events-none" />
+      <div className="absolute bottom-[15%] right-[10%] w-40 sm:w-60 lg:w-80 h-40 sm:h-60 lg:h-80 rounded-full bg-zs-cyan/[0.05] blur-[60px] lg:blur-[90px] animate-pulse-slow pointer-events-none" style={{ animationDelay: "2s" }} />
+
+      {/* Content */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-5 sm:px-8 lg:px-12 pt-20 sm:pt-24 lg:pt-28 pb-8 sm:pb-10">
 
         {/* Badge */}
-        <div className="mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
-          <div className="h-px w-6 sm:w-10 bg-zs-cyan/40" />
-          <span className="font-mono text-[9px] sm:text-[10px] lg:text-[11px] text-zs-cyan/70 border border-zs-cyan/20 px-2.5 py-1 rounded-full bg-zs-cyan/5 tracking-widest uppercase whitespace-nowrap">
+        <div className="mb-5 sm:mb-6 lg:mb-8 flex items-center gap-2.5 sm:gap-3 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+          <div className="h-px w-8 sm:w-12 bg-gradient-to-r from-transparent to-zs-cyan/50" />
+          <span className="font-mono text-[10px] sm:text-[11px] lg:text-xs text-zs-cyan/80 border border-zs-cyan/25 px-3 sm:px-4 py-1.5 rounded-full bg-zs-cyan/[0.06] tracking-[0.2em] uppercase whitespace-nowrap backdrop-blur-sm">
             {t.hero.badge}
           </span>
-          <div className="h-px w-6 sm:w-10 bg-zs-cyan/40" />
+          <div className="h-px w-8 sm:w-12 bg-gradient-to-l from-transparent to-zs-cyan/50" />
         </div>
 
         {/* Headline */}
-        <h1 className="font-syne font-extrabold leading-[0.88] tracking-tight mb-4 sm:mb-6">
-          <span className="block text-zs-text      text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[7.5rem]">{t.hero.line1}</span>
-          <span className="block text-gradient-cyan text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[7.5rem]">{t.hero.line2}</span>
-          <span className="block text-zs-text      text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[7.5rem]">{t.hero.line3}</span>
+        <h1 className="font-syne font-extrabold tracking-[-0.03em] mb-5 sm:mb-6 lg:mb-8 animate-fade-in-up" style={{ animationDelay: "0.25s" }}>
+          <span className="block text-zs-text text-[clamp(2.2rem,8vw,7.5rem)] leading-[0.9]">{t.hero.line1}</span>
+          <span className="block text-gradient-cyan text-[clamp(2.2rem,8vw,7.5rem)] leading-[0.9] py-1 sm:py-2">{t.hero.line2}</span>
+          <span className="block text-zs-text text-[clamp(2.2rem,8vw,7.5rem)] leading-[0.9]">{t.hero.line3}</span>
         </h1>
 
         {/* Subtitle */}
-        {/* Subtitle — left on mobile avoids word-gap stretch, centered on sm+ */}
-        <p className="font-dm text-sm sm:text-base md:text-lg text-zs-muted max-w-xs sm:max-w-lg lg:max-w-2xl leading-relaxed mb-6 sm:mb-8 text-left sm:text-center">
+        <p className="font-dm text-sm sm:text-base lg:text-lg text-zs-muted/90 max-w-[280px] sm:max-w-lg lg:max-w-2xl leading-[1.7] mb-7 sm:mb-8 lg:mb-10 text-center animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
           {t.hero.sub}
         </p>
 
-        {/* CTAs — always flex-row */}
-        <div className="flex flex-row items-center gap-3 sm:gap-4">
-          <a href="#what-is" className="flex-shrink-0 whitespace-nowrap px-5 sm:px-7 lg:px-8 py-2.5 sm:py-3 lg:py-3.5 bg-zs-cyan text-zs-bg font-syne font-bold text-[11px] sm:text-xs lg:text-sm tracking-widest uppercase rounded-xl hover:bg-zs-cyan-dim transition-colors duration-200">
+        {/* CTAs */}
+        <div className="flex flex-row items-center gap-3 sm:gap-4 animate-fade-in-up" style={{ animationDelay: "0.55s" }}>
+          <a href="#what-is" className="group relative flex-shrink-0 whitespace-nowrap px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 bg-zs-cyan text-zs-bg font-syne font-bold text-[11px] sm:text-xs lg:text-sm tracking-[0.15em] uppercase rounded-xl hover:bg-zs-cyan-dim transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,232,255,0.25)]">
             {t.hero.cta1}
           </a>
-          <a href="#architecture" className="flex-shrink-0 whitespace-nowrap px-5 sm:px-7 lg:px-8 py-2.5 sm:py-3 lg:py-3.5 border border-zs-border text-zs-text font-syne font-bold text-[11px] sm:text-xs lg:text-sm tracking-widest uppercase rounded-xl hover:border-zs-cyan/40 hover:text-zs-cyan transition-all duration-200">
+          <a href="#architecture" className="flex-shrink-0 whitespace-nowrap px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 border border-zs-border/80 text-zs-text font-syne font-bold text-[11px] sm:text-xs lg:text-sm tracking-[0.15em] uppercase rounded-xl hover:border-zs-cyan/50 hover:text-zs-cyan transition-all duration-300 backdrop-blur-sm">
             {t.hero.cta2}
           </a>
         </div>
       </div>
 
-      {/* Stats strip — always 4 equal columns */}
-      <div className="relative z-10 flex-shrink-0 border-t border-zs-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-5 grid grid-cols-4">
+      {/* Stats strip */}
+      <div className="relative z-10 flex-shrink-0 border-t border-zs-border/60 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-5 sm:py-6 grid grid-cols-4">
           {([
             { value: "132+",  label: t.hero.stat1, color: "text-zs-cyan"          },
             { value: "7",     label: t.hero.stat2, color: "text-zs-cyan"          },
@@ -144,8 +136,8 @@ export default function HeroSection() {
             { value: "VARA",  label: t.hero.stat4, color: "text-zs-gold"          },
           ] as const).map((stat, i) => (
             <div key={i} className="text-center px-1">
-              <div className={`font-syne font-bold text-base sm:text-xl lg:text-2xl ${stat.color}`}>{stat.value}</div>
-              <div className="font-mono text-[7px] sm:text-[9px] lg:text-[11px] text-zs-muted tracking-wider uppercase mt-0.5 leading-tight">{stat.label}</div>
+              <div className={`font-syne font-bold text-lg sm:text-2xl lg:text-3xl ${stat.color} tracking-tight`}>{stat.value}</div>
+              <div className="font-mono text-[7px] sm:text-[9px] lg:text-[11px] text-zs-muted/70 tracking-[0.15em] uppercase mt-1 leading-tight">{stat.label}</div>
             </div>
           ))}
         </div>

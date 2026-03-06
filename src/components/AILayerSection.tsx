@@ -41,7 +41,6 @@ const lineColor: Record<string, string> = {
 
 export default function AILayerSection() {
   const { t } = useLang();
-  // prefers-reduced-motion: show all lines immediately, skip typewriter animation
   const prefersReduced = typeof window !== "undefined"
     ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
     : false;
@@ -49,7 +48,6 @@ export default function AILayerSection() {
   const [visible, setVisible] = useState(prefersReduced ? terminalLines.length : 0);
 
   useEffect(() => {
-    // If reduced motion, all lines are already shown — no timer needed
     if (prefersReduced) return;
     if (visible < terminalLines.length) {
       const timer = setTimeout(() => setVisible((v) => v + 1), 170);
@@ -58,23 +56,23 @@ export default function AILayerSection() {
   }, [visible, prefersReduced]);
 
   return (
-    <section id="ai-layer" className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+    <section id="ai-layer" className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-x-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zs-gold/[0.02] to-transparent pointer-events-none" />
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-zs-gold/15 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="section-label mb-3">{t.ai.label}</div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-3 mb-8 sm:mb-12">
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-zs-text">
+        <div className="section-label mb-4">{t.ai.label}</div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-end gap-3 mb-10 sm:mb-14">
+          <h2 className="font-syne font-bold text-[clamp(1.5rem,4vw,3.25rem)] leading-[1.1] tracking-tight text-zs-text">
             {t.ai.title1}{" "}
             <span className="text-gradient-gold">{t.ai.title2}</span>
           </h2>
-          <p className="font-dm text-sm sm:text-base text-zs-muted leading-relaxed max-w-md">{t.ai.sub}</p>
+          <p className="font-dm text-sm sm:text-base text-zs-muted leading-[1.7] max-w-md">{t.ai.sub}</p>
         </div>
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start">
 
           {/* Terminal */}
           <div className="glass-card rounded-2xl border border-zs-border overflow-hidden min-w-0">
@@ -87,7 +85,7 @@ export default function AILayerSection() {
               </span>
             </div>
             <div
-              className="p-4 sm:p-5 font-mono text-[10px] sm:text-[11px] leading-[1.65] h-64 sm:h-80 lg:h-96 overflow-y-auto"
+              className="p-4 sm:p-5 font-mono text-[10px] sm:text-[11px] leading-[1.7] h-64 sm:h-80 lg:h-96 overflow-y-auto"
               role="log"
               aria-label="ZION AI terminal output"
               aria-live="polite"
@@ -106,7 +104,7 @@ export default function AILayerSection() {
             {capabilities.map((cap, i) => (
               <div key={i} className="p-3.5 sm:p-4 glass-card rounded-xl border border-zs-border hover:border-zs-gold/25 transition-colors duration-300 group">
                 <div className="flex items-start gap-3">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-zs-gold/10 border border-zs-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+                  <div className="w-8 h-8 rounded-lg bg-zs-gold/10 border border-zs-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
                     <span className="font-mono text-[9px] sm:text-[10px] text-zs-gold/70">
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -115,7 +113,7 @@ export default function AILayerSection() {
                     <h4 className="font-syne font-semibold text-xs sm:text-sm text-zs-text mb-1 group-hover:text-zs-gold transition-colors">
                       {cap.title}
                     </h4>
-                    <p className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-relaxed">{cap.desc}</p>
+                    <p className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-[1.7]">{cap.desc}</p>
                   </div>
                 </div>
               </div>
@@ -123,10 +121,10 @@ export default function AILayerSection() {
 
             {/* Advisory disclaimer */}
             <div className="p-3.5 sm:p-4 rounded-xl border border-zs-gold/20 bg-zs-gold/[0.04]">
-              <div className="font-mono text-[9px] sm:text-[10px] text-zs-gold tracking-widest uppercase mb-1.5">
+              <div className="font-mono text-[9px] sm:text-[10px] text-zs-gold tracking-[0.15em] uppercase mb-1.5">
                 {t.ai.advisory}
               </div>
-              <p className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-relaxed">
+              <p className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-[1.7]">
                 {t.ai.advisoryText}
               </p>
             </div>
