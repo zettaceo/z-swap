@@ -1,5 +1,7 @@
 "use client";
 
+import LiquidityFlowAnimation from "./LiquidityFlowAnimation";
+
 const capabilities = [
   { label: "Swap instantâneo multichain",  active: true  },
   { label: "Swap cross-chain nativo",       active: true  },
@@ -21,7 +23,6 @@ export default function LiquiditySection() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zs-violet/[0.03] to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Stack on mobile, side-by-side from lg */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
 
           {/* Text + capability chips */}
@@ -35,7 +36,6 @@ export default function LiquiditySection() {
               Z-SWAP evaluates all available liquidity paths across internal pools and external aggregations to deliver optimal execution prices with minimum slippage and MEV protection.
             </p>
 
-            {/* 2-col chip grid */}
             <div className="grid grid-cols-1 xs:grid-cols-2 gap-1.5 sm:gap-2">
               {capabilities.map((cap, i) => (
                 <div key={i} className="flex items-center gap-2 p-2 sm:p-2.5 rounded-lg bg-zs-bg-3/40 border border-zs-faint/30">
@@ -48,63 +48,33 @@ export default function LiquiditySection() {
             </div>
           </div>
 
-          {/* Flow diagram — SVG is responsive via viewBox + w-full */}
-          <div className="glass-card rounded-2xl p-4 sm:p-6 lg:p-8 border border-zs-border w-full">
-            <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase mb-4">
-              Swap Execution Flow
+          {/* B1 — Liquidity Flow Animation */}
+          <div className="glass-card rounded-2xl p-4 sm:p-6 lg:p-8 border border-zs-border w-full min-w-0">
+            <div className="flex items-center justify-between mb-4 gap-2">
+              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase">
+                Liquidity Flow — Live Routing
+              </div>
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                <div className="w-1.5 h-1.5 rounded-full bg-zs-cyan pulse-dot" />
+                <span className="font-mono text-[9px] text-zs-cyan/70">ACTIVE</span>
+              </div>
             </div>
-            <svg viewBox="0 0 300 380" className="w-full max-w-xs sm:max-w-sm md:max-w-full mx-auto" fill="none" aria-hidden="true">
-              <rect x="75" y="8"   width="150" height="40" rx="8" fill="rgba(0,232,255,0.08)"  stroke="rgba(0,232,255,0.3)"   strokeWidth="1"/>
-              <text x="150" y="24" textAnchor="middle" fill="rgba(0,232,255,0.9)"  fontSize="10" fontFamily="monospace" fontWeight="600">USER REQUEST</text>
-              <text x="150" y="40" textAnchor="middle" fill="rgba(0,232,255,0.5)"  fontSize="8"  fontFamily="monospace">Token A → Token B</text>
 
-              <line x1="150" y1="48"  x2="150" y2="72"  stroke="rgba(0,232,255,0.3)"   strokeWidth="1" strokeDasharray="3 2"/>
-              <polygon points="146,70 154,70 150,77" fill="rgba(0,232,255,0.5)"/>
+            <LiquidityFlowAnimation />
 
-              <rect x="55" y="77"  width="190" height="40" rx="8" fill="rgba(124,58,237,0.1)" stroke="rgba(124,58,237,0.4)"  strokeWidth="1"/>
-              <text x="150" y="94" textAnchor="middle" fill="rgba(159,95,255,0.9)" fontSize="10" fontFamily="monospace" fontWeight="600">SMART ROUTER</text>
-              <text x="150" y="109" textAnchor="middle" fill="rgba(159,95,255,0.5)" fontSize="8" fontFamily="monospace">Path optimization engine</text>
-
-              <line x1="105" y1="117" x2="55"  y2="152" stroke="rgba(0,232,255,0.18)" strokeWidth="1"/>
-              <line x1="150" y1="117" x2="150" y2="152" stroke="rgba(0,232,255,0.18)" strokeWidth="1"/>
-              <line x1="195" y1="117" x2="245" y2="152" stroke="rgba(0,232,255,0.18)" strokeWidth="1"/>
-
-              {([
-                { x: 15,  label: "DIRECT",     sub: "Pool"       },
-                { x: 110, label: "MULTI-HOP",  sub: "2-3 steps"  },
-                { x: 205, label: "AGGREGATED", sub: "External"   },
-              ] as const).map((n, i) => (
-                <g key={i}>
-                  <rect x={n.x} y="152" width="80" height="36" rx="6" fill="rgba(0,232,255,0.05)" stroke="rgba(0,232,255,0.18)" strokeWidth="1"/>
-                  <text x={n.x+40} y="168" textAnchor="middle" fill="rgba(0,232,255,0.75)" fontSize="8"  fontFamily="monospace" fontWeight="600">{n.label}</text>
-                  <text x={n.x+40} y="181" textAnchor="middle" fill="rgba(0,232,255,0.4)"  fontSize="7"  fontFamily="monospace">{n.sub}</text>
-                </g>
+            {/* Execution stats row */}
+            <div className="mt-4 pt-4 border-t border-zs-border grid grid-cols-3 gap-2">
+              {[
+                { label: "Avg Slippage", value: "0.04%",  color: "text-zs-green" },
+                { label: "Routes",       value: "14",      color: "text-zs-cyan"  },
+                { label: "MEV Shield",   value: "Active",  color: "text-zs-gold"  },
+              ].map((s, i) => (
+                <div key={i} className="text-center">
+                  <div className={`font-syne font-bold text-xs sm:text-sm ${s.color}`}>{s.value}</div>
+                  <div className="font-mono text-[8px] sm:text-[9px] text-zs-muted mt-0.5">{s.label}</div>
+                </div>
               ))}
-
-              <line x1="55"  y1="188" x2="115" y2="215" stroke="rgba(0,232,255,0.15)" strokeWidth="1"/>
-              <line x1="150" y1="188" x2="150" y2="215" stroke="rgba(0,232,255,0.15)" strokeWidth="1"/>
-              <line x1="245" y1="188" x2="185" y2="215" stroke="rgba(0,232,255,0.15)" strokeWidth="1"/>
-
-              <rect x="65" y="215" width="170" height="36" rx="8" fill="rgba(245,166,35,0.08)" stroke="rgba(245,166,35,0.3)" strokeWidth="1"/>
-              <text x="150" y="231" textAnchor="middle" fill="rgba(245,166,35,0.9)" fontSize="9" fontFamily="monospace" fontWeight="600">BEST PRICE SELECTION</text>
-              <text x="150" y="244" textAnchor="middle" fill="rgba(245,166,35,0.5)" fontSize="7" fontFamily="monospace">Gas + slippage optimization</text>
-
-              <line x1="150" y1="251" x2="150" y2="272" stroke="rgba(245,166,35,0.3)" strokeWidth="1" strokeDasharray="3 2"/>
-              <polygon points="146,270 154,270 150,277" fill="rgba(245,166,35,0.5)"/>
-
-              <rect x="75" y="277" width="150" height="36" rx="8" fill="rgba(0,232,255,0.06)" stroke="rgba(0,232,255,0.2)" strokeWidth="1"/>
-              <text x="150" y="293" textAnchor="middle" fill="rgba(0,232,255,0.85)" fontSize="9" fontFamily="monospace" fontWeight="600">ZION AI CHECK</text>
-              <text x="150" y="306" textAnchor="middle" fill="rgba(0,232,255,0.45)" fontSize="7" fontFamily="monospace">Risk · Simulation · MEV</text>
-
-              <line x1="150" y1="313" x2="150" y2="328" stroke="rgba(0,232,255,0.25)" strokeWidth="1"/>
-              <rect x="90" y="328" width="120" height="26" rx="5" fill="rgba(0,224,135,0.1)" stroke="rgba(0,224,135,0.4)" strokeWidth="1"/>
-              <text x="150" y="345" textAnchor="middle" fill="rgba(0,224,135,0.9)" fontSize="9" fontFamily="monospace" fontWeight="600">EXECUTE SWAP</text>
-
-              <circle cx="150" cy="60" r="2" fill="rgba(0,232,255,0.7)">
-                <animate attributeName="cy" values="60;72;60" dur="1.8s" repeatCount="indefinite"/>
-                <animate attributeName="opacity" values="1;0;1" dur="1.8s" repeatCount="indefinite"/>
-              </circle>
-            </svg>
+            </div>
           </div>
         </div>
       </div>

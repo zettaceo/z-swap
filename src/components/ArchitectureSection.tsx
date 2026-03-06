@@ -1,6 +1,7 @@
 "use client";
 
 import { useLang } from "@/lib/i18n";
+import MultiChainRouting from "./MultiChainRouting";
 
 export default function ArchitectureSection() {
   const { t } = useLang();
@@ -124,7 +125,7 @@ export default function ArchitectureSection() {
         </div>
 
         {/* Layer summary cards — 2 cols on mobile, 5 on desktop */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 mb-6 sm:mb-8">
           {layerCards.map((item, i) => (
             <div key={i} className="glass-card p-3 sm:p-4 rounded-xl border border-zs-border text-center">
               <div className={`font-mono text-[10px] sm:text-xs tracking-widest uppercase mb-1.5 font-bold ${colorClass[item.color]}`}>
@@ -133,6 +134,46 @@ export default function ArchitectureSection() {
               <div className="font-dm text-[10px] sm:text-xs text-zs-text/70 leading-snug">{item.desc}</div>
             </div>
           ))}
+        </div>
+
+        {/* B2 — Multi-Chain Routing Diagram */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+          <div className="glass-card rounded-2xl border border-zs-border p-4 sm:p-6 min-w-0">
+            <div className="flex items-center justify-between mb-4 gap-2">
+              <div className="font-mono text-[9px] sm:text-[10px] text-zs-muted tracking-widest uppercase">
+                Multi-Chain Routing — Live
+              </div>
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                <div className="w-1.5 h-1.5 rounded-full bg-zs-green pulse-dot" />
+                <span className="font-mono text-[9px] text-zs-green/70">ROUTING</span>
+              </div>
+            </div>
+            <MultiChainRouting />
+          </div>
+
+          <div className="flex flex-col gap-3 min-w-0">
+            <div className="section-label mb-1">Cross-Chain Settlement</div>
+            <h3 className="font-syne font-bold text-lg sm:text-xl lg:text-2xl text-zs-text leading-tight">
+              One Router.{" "}
+              <span className="text-gradient-cyan">Every Chain.</span>
+            </h3>
+            <p className="font-dm text-sm text-zs-muted leading-relaxed">
+              Z-SWAP routes all swaps through a single unified settlement engine across supported networks. Packets flow from the source chain through the Z-SWAP Router and settle on the destination chain in a single atomic operation.
+            </p>
+            {[
+              { label: "Unified liquidity",  desc: "Cross-chain pools treated as single liquidity surface." },
+              { label: "Atomic settlement",  desc: "No partial fills — transaction completes end-to-end." },
+              { label: "Native finality",    desc: "ZETTA Chain provides primary settlement guarantees."  },
+            ].map((item, i) => (
+              <div key={i} className="flex gap-3 p-3 rounded-xl bg-zs-bg-3/50 border border-zs-faint/30">
+                <div className="w-1.5 h-1.5 rounded-full bg-zs-cyan flex-shrink-0 mt-1.5" />
+                <div>
+                  <div className="font-syne font-semibold text-xs sm:text-sm text-zs-text mb-0.5">{item.label}</div>
+                  <div className="font-dm text-[11px] sm:text-xs text-zs-muted/80 leading-relaxed">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

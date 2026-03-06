@@ -6,17 +6,45 @@
   --font-syne: "Syne", sans-serif;
   --font-dm-sans: "DM Sans", sans-serif;
   --font-dm-mono: "DM Mono", monospace;
+  /* Safe area insets — env() with 0px fallback for browsers that don't support it */
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
 }
 
 * { box-sizing: border-box; padding: 0; margin: 0; }
 
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Prevent iOS Safari from adjusting font sizes */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 
 body {
   background-color: #04040C;
   color: #E2E2F0;
   font-family: var(--font-dm-sans);
   overflow-x: hidden;
+  /* Ensure content doesn't go under notch on left/right */
+  padding-left: var(--sal);
+  padding-right: var(--sar);
+  /* iOS momentum scrolling */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ─── Respect prefers-reduced-motion ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 ::-webkit-scrollbar { width: 3px; }
@@ -166,4 +194,46 @@ body {
 }
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+/* ─── Safe-area nav ─────────────────────────────────────────────────────── */
+/* Applies notch-aware top padding to the fixed nav bar */
+.nav-safe {
+  padding-top: var(--sat);
+}
+
+/* ─── Liquidity flow animation ───────────────────────────────────────────── */
+@keyframes liquidFlow {
+  0%   { stroke-dashoffset: 120; opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { stroke-dashoffset: 0;   opacity: 0; }
+}
+.liquid-stream {
+  stroke-dasharray: 40 80;
+  stroke-dashoffset: 120;
+  animation: liquidFlow 3s ease-in-out infinite;
+}
+
+@keyframes nodeRipple {
+  0%   { r: 18; opacity: 0.5; }
+  100% { r: 38; opacity: 0;   }
+}
+.node-ripple {
+  animation: nodeRipple 2.5s ease-out infinite;
+}
+
+/* ─── Multi-chain routing glow ───────────────────────────────────────────── */
+@keyframes routePulse {
+  0%,100% { opacity: 0.15; }
+  50%      { opacity: 0.5; }
+}
+.route-glow {
+  animation: routePulse 2s ease-in-out infinite;
+}
+
+/* ─── Particle canvas (hero) ─────────────────────────────────────────────── */
+.particle-canvas {
+  display: block;
+  touch-action: none; /* allow pointer events on touch */
 }
