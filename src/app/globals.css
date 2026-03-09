@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-syne: "Syne", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-dm-mono: "DM Mono", monospace;
+  /* Safe area insets — env() with 0px fallback for browsers that don't support it */
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+}
+
+* { box-sizing: border-box; padding: 0; margin: 0; }
+
+/*
+ * ─── TEXT RENDERING — the root cause of "Word PDF" effect ──────────────────
+ *
+ * `text-center` on long paragraphs forces the browser to distribute leftover
+ * whitespace across word gaps — exactly like Word's "Justify" mode.
+ *
+ * Fix: `text-wrap: pretty`  → browser chooses line breaks that minimize orphans
+ *       and avoids stretching word gaps. Supported in Chrome 117+, Safari 17.4+.
+ *      `text-wrap: balance` → headings get equal-length lines. No more triangles.
+ *
+ * These are zero-gambiarra, spec-correct solutions.
+ */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+p, li, blockquote {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Prevent iOS Safari from adjusting font sizes */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background-color: #04040C;
+  color: #E2E2F0;
+  font-family: var(--font-dm-sans);
+  overflow-x: hidden;
+  /* Ensure content doesn't go under notch on left/right */
+  padding-left: var(--sal);
+  padding-right: var(--sar);
+  /* iOS momentum scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Typography quality across rendering engines */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Respect prefers-reduced-motion ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #04040C; }
+::-webkit-scrollbar-thumb { background: #1A1A35; border-radius: 2px; }
+::selection { background: rgba(0,232,255,0.18); color: #00E8FF; }
+
+/* Noise overlay */
+.noise-overlay::before {
+  content: '';
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.3;
+}
+
+/* Grid background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0,232,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,232,255,0.035) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(13,13,31,0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(26,26,53,0.8);
+}
+
+/* Nav blur */
+.nav-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Gradient text */
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #00E8FF 0%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-gold {
+  background: linear-gradient(135deg, #F5A623 0%, #FF6B35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tag badge */
+.tag-badge {
+  font-family: var(--font-dm-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Section label */
+.section-label {
+  font-family: var(--font-dm-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #00E8FF;
+}
+
+/* Divider */
+.divider-glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,232,255,0.2), transparent);
+}
+
+/* Pulse dot */
+.pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%,100% { box-shadow: 0 0 0 0 rgba(0,224,135,0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(0,224,135,0); }
+}
+
+/* Terminal cursor */
+.terminal-cursor {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%,100% { opacity:1; }
+  50% { opacity:0; }
+}
+
+/* Animations */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.animate-pulse-slow {
+  animation: pulse 5s cubic-bezier(0.4,0,0.6,1) infinite;
+}
+
+/* Flow path for SVG */
+.flow-path {
+  stroke-dasharray: 8 4;
+  animation: dashFlow 2s linear infinite;
+}
+@keyframes dashFlow {
+  to { stroke-dashoffset: -24; }
+}
+
+/* Shimmer */
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(0,232,255,0.05) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ─── Dynamic viewport height ─────────────────────────────────────────────
+ * `100dvh` = real visible viewport, excluding browser chrome.
+ * Fixes the dead-space issue on Android (Brave, Chrome) where 100vh includes
+ * the address bar, navigation bar, etc.
+ *
+ * Two-value cascade:
+ *   1st value: 100vh  (old browsers, no dvh support — acceptable fallback)
+ *   2nd value: 100dvh (modern browsers — overrides 1st value correctly)
+ *
+ * The `.min-h-dvh` class is declared by Tailwind 3.4, but this rule ensures
+ * the cascade always works correctly.
+ */
+.min-h-dvh {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Hero height tuned to avoid giant dead space on tall screens */
+.hero-shell {
+  min-height: clamp(40rem, 88vh, 56rem);
+}
+@supports (height: 100svh) {
+  .hero-shell {
+    min-height: clamp(40rem, 88svh, 56rem);
+  }
+}
+@supports (height: 100dvh) {
+  .hero-shell {
+    min-height: clamp(40rem, 88dvh, 56rem);
+  }
+}
+
+/* Scrollbar hide utility for horizontal scroll containers */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Safe-area nav ─────────────────────────────────────────────────────── */
+/* Applies notch-aware top padding to the fixed nav bar */
+.nav-safe {
+  padding-top: var(--sat);
+}
+
+/* ─── Liquidity flow animation ───────────────────────────────────────────── */
+@keyframes liquidFlow {
+  0%   { stroke-dashoffset: 120; opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { stroke-dashoffset: 0;   opacity: 0; }
+}
+.liquid-stream {
+  stroke-dasharray: 40 80;
+  stroke-dashoffset: 120;
+  animation: liquidFlow 3s ease-in-out infinite;
+}
+
+@keyframes nodeRipple {
+  0%   { r: 18; opacity: 0.5; }
+  100% { r: 38; opacity: 0;   }
+}
+.node-ripple {
+  animation: nodeRipple 2.5s ease-out infinite;
+}
+
+/* ─── Multi-chain routing glow ───────────────────────────────────────────── */
+@keyframes routePulse {
+  0%,100% { opacity: 0.15; }
+  50%      { opacity: 0.5; }
+}
+.route-glow {
+  animation: routePulse 2s ease-in-out infinite;
+}
+
+/* ─── Particle canvas (hero) ─────────────────────────────────────────────── */
+.particle-canvas {
+  display: block;
+  touch-action: none; /* allow pointer events on touch */
+}
